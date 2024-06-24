@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+
+import Tiles.TileManager;
 import entity.Jogador;
 
 public class Tela extends JPanel implements Runnable{
@@ -12,18 +14,19 @@ public class Tela extends JPanel implements Runnable{
         //SCREE SETTINGS
         final int originalTileSize = 16; //16x16 tile
         final int scale =3;
-
+        // acho que a gente vai ter que mudar esses atriburos pra private
         public final int tileSize = originalTileSize * scale; //48x48
-        final int maxScreenCol = 16;
-        final int maxScreenRow = 12;
-        final int screenWidth = tileSize * maxScreenCol; //768 pixels
-        final int screenHeight = tileSize * maxScreenRow; //576 pixels
+        public final int maxScreenCol = 16;
+        public final int maxScreenRow = 12;
+        public final int screenWidth = tileSize * maxScreenCol; //768 pixels
+        public final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
 
 
     //FPS
         int fps = 60;
 
+        TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler();
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         Jogador jogador = new Jogador(this, keyH);
@@ -94,6 +97,7 @@ public class Tela extends JPanel implements Runnable{
 
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
+            tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
             jogador.draw(g2);
 
             g2.dispose();
