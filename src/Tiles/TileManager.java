@@ -39,18 +39,18 @@ public class TileManager {
         int x = 0;
         int y = 0;
 
-        while (col < tj.maxScreenCol && row < tj.maxScreenRow){
-            g2.drawImage(tile[0].image, 0,0, tj.tileSize, tj.tileSize,null);
-            col ++;
-            x += tj.tileSize;
-
-            if (col == tj.maxScreenCol){
-                col = 0;
-                x = 0;
-                row++;
-                y += tj.tileSize;
+        while (row < tj.maxScreenRow) {
+            while (col < tj.maxScreenCol) {
+                g2.drawImage(tile[0].image, x, y, tj.tileSize, tj.tileSize, null);
+                col++;
+                x += tj.tileSize;
             }
+            col = 0;
+            x = 0;
+            row++;
+            y += tj.tileSize;
         }
+
 
     }
 }
