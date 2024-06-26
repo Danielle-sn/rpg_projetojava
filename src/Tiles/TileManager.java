@@ -4,17 +4,23 @@ import main.Tela;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class TileManager {
 
     Tela tj;
     Tile [] tile;
+    int mapTileNum[] [];
 
     public TileManager(Tela tj){
         this.tj = tj;
         tile = new Tile[10];
+        mapTileNum = new int[tj.maxScreenCol] [tj.maxScreenRow];
         getTileImage();
+        loadMap();
     }
 
     public void getTileImage(){
@@ -32,6 +38,34 @@ public class TileManager {
             e.printStackTrace();
         }
     }
+    public void loadMap() {
+        try {
+            InputStream is = getClass().getResourceAsStream("/maps/map01.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            int col = 0;
+            int row = 0;
+
+            while (row < tj.maxScreenRow) {
+                while (col < tj.maxScreenCol) {
+                    String line = br.readLine();
+                    while (col < tj.maxScreenCol) {
+                        String numbers[] = line.split("");
+                        int num = Integer.parseInt(numbers[col]);
+                        mapTileNum[col][row] = num;
+                        col++;
+                    }
+                    if (col == tj.maxScreenCol) {
+                        col = 0;
+                        row++;
+
+                    }
+                    br.close();
+                }
+            }
+            }catch(Exception e){
+
+            }
+    }
     public void draw(Graphics2D g2){
 
         int col = 0;
@@ -41,7 +75,8 @@ public class TileManager {
 
         while (row < tj.maxScreenRow) {
             while (col < tj.maxScreenCol) {
-                g2.drawImage(tile[0].image, x, y, tj.tileSize, tj.tileSize, null);
+                int tileNum = mapTileNum[col][row];
+                g2.drawImage(tile[tileNum].image, x, y, tj.tileSize, tj.tileSize, null);
                 col++;
                 x += tj.tileSize;
             }
