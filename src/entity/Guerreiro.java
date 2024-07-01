@@ -8,15 +8,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Jogador extends Entity{
-    Tela tj;
-    KeyHandler keyH;
-    public Jogador(Tela tj, KeyHandler keyH ){
-        this.tj = tj;
-        this.keyH = keyH;
+public class Guerreiro extends Personagem{
+
+    public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
+        super(nome,saude,nivel, ataque, tj, keyH);
 
         setDefaultValues();
-        getJogador();
+        getGuerreiro();
     }
     public void setDefaultValues(){
         x = 100;
@@ -24,7 +22,7 @@ public class Jogador extends Entity{
         speed = 4;
         direction = "down";
     }
-    public void getJogador(){
+    public void getGuerreiro(){
         try{
             up1 = ImageIO.read(getClass().getResourceAsStream("/Jogador/guerreiro_up1.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/Jogador/guerreiro_up2.png"));
@@ -41,22 +39,22 @@ public class Jogador extends Entity{
     }
     public void update(){
         // esse método está  dentro do loop então é chamado 60 vezes por segundo
-        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){
+        if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
 
-            if(keyH.upPressed == true) {
+            if(keyH.upPressed) {
                 direction  = "up";
                 y -= speed;
             }
-            else if (keyH.downPressed == true) {
+            else if (keyH.downPressed) {
                 direction  = "down";
                 y += speed;
             }
 
-            else if (keyH.leftPressed == true){
+            else if (keyH.leftPressed){
                 direction  = "left";
                 x -= speed;
             }
-            else if (keyH.rightPressed == true){
+            else {
                 direction  = "right";
                 x += speed;
             }

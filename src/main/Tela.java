@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Tiles.TileManager;
-import entity.Jogador;
+import entity.Guerreiro;
 
 public class Tela extends JPanel implements Runnable{
 
@@ -29,7 +29,7 @@ public class Tela extends JPanel implements Runnable{
         TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler();
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
-        Jogador jogador = new Jogador(this, keyH);
+        Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
 
         //posicao padrao player
         int playerX = 100;
@@ -90,7 +90,7 @@ public class Tela extends JPanel implements Runnable{
 
 
         public void update(){
-            jogador.update();
+            guerreiro.update();
         }
 
         public void paintComponent(Graphics g){ //metodo padrao
@@ -98,7 +98,7 @@ public class Tela extends JPanel implements Runnable{
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
             tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
-            jogador.draw(g2);
+            guerreiro.draw(g2);
 
             g2.dispose();
         }

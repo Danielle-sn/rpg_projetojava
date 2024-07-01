@@ -13,7 +13,7 @@ public class TileManager {
 
     Tela tj;
     Tile [] tile;
-    int mapTileNum[] [];
+    int[][] mapTileNum;
 
     public TileManager(Tela tj){
         this.tj = tj;
@@ -49,7 +49,7 @@ public class TileManager {
                 while (col < tj.maxScreenCol) {
                     String line = br.readLine();
                     while (col < tj.maxScreenCol) {
-                        String numbers[] = line.split("");
+                        String numbers[] = line.split(" ");
                         int num = Integer.parseInt(numbers[col]);
                         mapTileNum[col][row] = num;
                         col++;
@@ -62,7 +62,7 @@ public class TileManager {
                     br.close();
                 }
             }
-            }catch(Exception e){
+            }catch(Exception ignored){
 
             }
     }
