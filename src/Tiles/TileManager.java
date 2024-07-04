@@ -18,9 +18,9 @@ public class TileManager {
     public TileManager(Tela tj){
         this.tj = tj;
         tile = new Tile[10];
-        mapTileNum = new int[tj.maxScreenCol] [tj.maxScreenRow];
+        mapTileNum = new int[tj.maxWorldCol] [tj.maxWorldRow];
         getTileImage();
-        loadMap();
+        loadMap("maps/map01.txt");
     }
 
     public void getTileImage(){
@@ -53,7 +53,7 @@ public class TileManager {
             e.printStackTrace();
         }
     }
-    public void loadMap() {
+    public void loadMap(String filePath) {
         try {
             InputStream is = getClass().getResourceAsStream("/maps/map01.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));

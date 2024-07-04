@@ -10,15 +10,20 @@ import java.io.IOException;
 
 public class Guerreiro extends Personagem{
 
+    public final int screenX;
+    public final int screenY;
+
     public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
         super(nome,saude,nivel, ataque, tj, keyH);
+        screenX = tj.screenWidth/2 - (tj.tileSize/2);
+        screenY = tj.screenHeight/2 - (tj.tileSize/2);
 
         setDefaultValues();
         getGuerreiro();
     }
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
+        worldX = tj.tileSize * 23;
+        worldY = tj.tileSize * 21;
         speed = 4;
         direction = "down";
     }
@@ -43,20 +48,20 @@ public class Guerreiro extends Personagem{
 
             if(keyH.upPressed) {
                 direction  = "up";
-                y -= speed;
+                worldY -= speed;
             }
             else if (keyH.downPressed) {
                 direction  = "down";
-                y += speed;
+                worldY += speed;
             }
 
             else if (keyH.leftPressed){
                 direction  = "left";
-                x -= speed;
+                worldX -= speed;
             }
             else {
                 direction  = "right";
-                x += speed;
+                worldX += speed;
             }
             spriteCounter++;
             if (spriteCounter > 12){
@@ -111,7 +116,7 @@ public class Guerreiro extends Personagem{
                 break;
 
         }
-        g2.drawImage(image, x, y, tj.tileSize, tj.tileSize, null);
+        g2.drawImage(image, screenX, screenY, tj.tileSize, tj.tileSize, null);
 
     }
 
