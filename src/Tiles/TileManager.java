@@ -4,10 +4,7 @@ import main.Tela;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class TileManager {
 
@@ -20,7 +17,7 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[tj.maxWorldCol] [tj.maxWorldRow];
         getTileImage();
-        loadMap("maps/map01.txt");
+        loadMap("/res/maps/map01.txt");
     }
 
     public void getTileImage(){
@@ -54,51 +51,60 @@ public class TileManager {
         }
     }
     public void loadMap(String filePath) {
+
         try {
-            InputStream is = getClass().getResourceAsStream("/maps/map01.txt");
+            InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int col = 0;
             int row = 0;
 
-            while (row < tj.maxScreenRow) {
-                while (col < tj.maxScreenCol) {
+            while (row < tj.maxWorldCol) {
+                while (col < tj.maxWorldRow) {
                     String line = br.readLine();
-                    while (col < tj.maxScreenCol) {
-                        String numbers[] = line.split(" ");
+                    while (col < tj.maxWorldCol) {
+                        String[] numbers = line.split(" ");
+                        //char numChar = line.charAt(col);
                         int num = Integer.parseInt(numbers[col]);
+                        //int num = Character.getNumericValue(numChar);
                         mapTileNum[col][row] = num;
                         col++;
                     }
-                    if (col == tj.maxScreenCol) {
+                    //if (col == tj.maxWorldCol) {
                         col = 0;
                         row++;
-
-                    }
-                    br.close();
+                    //}
                 }
             }
-            }catch(Exception ignored){
+            br.close();
 
+            }catch(Exception e){
+                e.printStackTrace();
             }
-    }
+        }
+//  } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
     public void draw(Graphics2D g2){
 
-        int col = 0;
-        int row = 0;
-        int x = 0;
-        int y = 0;
+        int worldCol = 0;
+        int worldRow = 0;
 
-        while (row < tj.maxScreenRow) {
-            while (col < tj.maxScreenCol) {
-                int tileNum = mapTileNum[col][row];
-                g2.drawImage(tile[tileNum].image, x, y, tj.tileSize, tj.tileSize, null);
-                col++;
-                x += tj.tileSize;
+        while (worldRow < tj.maxWorldRow) {
+            while (worldCol < tj.maxWorldCol) {
+                int tileNum = mapTileNum[worldCol][worldRow];
+
+                int worldX = worldCol * tj.tileSize;
+                int worldY = worldRow * tj.tileSize;
+                int screenX = worldX - tj.guerreiro.worldX + tj.guerreiro.screenX; // tirar a diferença entre as coordenadas da tela e do mapa
+                int screenY = worldY - tj.guerreiro.worldY + tj.guerreiro.screenY;
+
+                g2.drawImage(tile[tileNum].image, screenX, screenY, tj.tileSize, tj.tileSize, null);
+                worldCol++;
+                System.out.println(tileNum);
             }
-            col = 0;
-            x = 0;
-            row++;
-            y += tj.tileSize;
+            worldCol = 0;
+            worldRow++;
+
         }
 
 

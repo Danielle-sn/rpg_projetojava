@@ -35,7 +35,7 @@ public class Tela extends JPanel implements Runnable{
         TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler();
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
-        Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
+        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
 
         //posicao padrao player
         int playerX = 100;
