@@ -37,13 +37,6 @@ public class Tela extends JPanel implements Runnable{
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
 
-        //posicao padrao player
-        int playerX = 100;
-        int playerY = 100;
-        int playerSpeed =4; //quantidade de pixels para andar ou voltar
-
-
-
 
         public Tela() {
 

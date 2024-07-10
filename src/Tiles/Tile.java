@@ -1,5 +1,5 @@
 package Tiles;
-
+// representa um único tile
 import java.awt.image.BufferedImage;
 
 public class Tile {
