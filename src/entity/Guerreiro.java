@@ -15,8 +15,16 @@ public class Guerreiro extends Personagem{
 
     public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
         super(nome,saude,nivel, ataque, tj, keyH);
+
         screenX = tj.screenWidth/2 - (tj.tileSize/2);
         screenY = tj.screenHeight/2 - (tj.tileSize/2);
+
+        //area de colisão do jogador
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 8;
+        solidArea.width = 32;
+        solidArea.height = 32;
 
         setDefaultValues();
         getGuerreiro();
@@ -48,21 +56,39 @@ public class Guerreiro extends Personagem{
 
             if(keyH.upPressed) {
                 direction  = "up";
-                worldY -= speed;
             }
             else if (keyH.downPressed) {
                 direction  = "down";
-                worldY += speed;
             }
 
             else if (keyH.leftPressed){
                 direction  = "left";
-                worldX -= speed;
             }
             else {
                 direction  = "right";
-                worldX += speed;
             }
+            //checando a colisao do tile
+            collisionOn = false;
+            tj.checandoColisao.checarTile(this);
+
+            // se colisão é falsa, jogador pode se mover
+            if(collisionOn == false){
+                switch(direction){
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+
             spriteCounter++;
             if (spriteCounter > 12){
                 if(spriteNum == 1){
