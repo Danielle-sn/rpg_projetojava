@@ -17,6 +17,7 @@ public class Main {
                 window.setLocationRelativeTo(null); // vai estar no centro
                 window.setVisible(true);
 
+                tela.setupGame();
                 tela.startGameThred();
 
 

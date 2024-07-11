@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
+import Itens.SuperItens;
 import Tiles.TileManager;
 import entity.Guerreiro;
 
@@ -36,8 +37,9 @@ public class Tela extends JPanel implements Runnable{
         KeyHandler keyH = new KeyHandler();
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
+        public CriarItens cItens = new CriarItens(this);
         public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
-
+        public SuperItens[] itens = new SuperItens[10];
 
         public Tela() {
 
@@ -46,6 +48,9 @@ public class Tela extends JPanel implements Runnable{
             this.setDoubleBuffered(true);
             this.addKeyListener(keyH);
             this.setFocusable(true);
+        }
+        public void setupGame(){
+            cItens.setItem();
         }
 
         public void startGameThred() {
@@ -97,7 +102,15 @@ public class Tela extends JPanel implements Runnable{
 
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
+            //tile
             tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
+            //itens
+            for(int i = 0; i < itens.length; i++){
+                if(itens[i] != null){
+                    itens[i].draw(g2,this);
+                }
+            }
+            // jogador
             guerreiro.draw(g2);
 
             g2.dispose();
