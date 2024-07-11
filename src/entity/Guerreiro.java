@@ -21,10 +21,10 @@ public class Guerreiro extends Personagem{
 
         //area de colisão do jogador
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 8;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.x = 9;
+        solidArea.y = 9;
+        solidArea.width = 30;
+        solidArea.height = 30;
 
         setDefaultValues();
         getGuerreiro();
