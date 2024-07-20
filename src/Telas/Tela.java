@@ -1,4 +1,4 @@
-package main;
+package Telas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,10 +10,13 @@ import Itens.SuperItens;
 import Tiles.TileManager;
 import entity.Esqueleto;
 import entity.Guerreiro;
+import main.ChecandoColisao;
+import main.CriarItens;
+import main.KeyHandler;
 
 public class Tela extends JPanel implements Runnable{
 
-        //SCREE SETTINGS
+        //SCREEN SETTINGS
         final int originalTileSize = 16; //16x16 tile
         final int scale =3;
         // acho que a gente vai ter que mudar esses atriburos pra private
@@ -34,7 +37,7 @@ public class Tela extends JPanel implements Runnable{
     //FPS
         int fps = 60;
 
-        TileManager tileM = new TileManager(this);
+        public TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler();
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
@@ -44,12 +47,12 @@ public class Tela extends JPanel implements Runnable{
         public SuperItens[] itens = new SuperItens[10];
 
         public Tela() {
-
             this.setPreferredSize(new Dimension(screenWidth, screenHeight));
             this.setBackground(Color.black);
             this.setDoubleBuffered(true);
             this.addKeyListener(keyH);
             this.setFocusable(true);
+            this.requestFocusInWindow();
         }
         public void setupGame(){
             cItens.setItem();
@@ -57,7 +60,7 @@ public class Tela extends JPanel implements Runnable{
 
         public void startGameThred() {
 
-            gameThread = new Thread(this); //passando main.Tela para esse construtor
+            gameThread = new Thread(this); //passando Telas.Tela para esse construtor
             gameThread.start(); //automaticamente chamar run method
 
         }
@@ -97,6 +100,7 @@ public class Tela extends JPanel implements Runnable{
 
 
         public void update(){
+
             guerreiro.update();
         }
 
@@ -104,6 +108,7 @@ public class Tela extends JPanel implements Runnable{
 
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
+
             //tile
             tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
             //itens
@@ -120,7 +125,10 @@ public class Tela extends JPanel implements Runnable{
             g2.dispose();
         }
 
-
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        requestFocusInWindow(); // Foco painel (permite que  painel receba a entrada de taclas)
+    }
 
 
 }

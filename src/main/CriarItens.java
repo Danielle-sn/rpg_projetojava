@@ -4,6 +4,7 @@ import Itens.InEsqueleto;
 import Itens.ItemBau;
 import Itens.ItemKey;
 import Itens.ItemPorta;
+import Telas.Tela;
 
 public class CriarItens {
     Tela tj;
