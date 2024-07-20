@@ -19,8 +19,8 @@ public class CriarItens {
         tj.itens[1].worldY = 25 * tj.tileSize;
 
         tj.itens[2] = new ItemPorta();
-        tj.itens[2].worldX = 42 * tj.tileSize;
-        tj.itens[2].worldY = 33 * tj.tileSize;
+        tj.itens[2].worldX = 36 * tj.tileSize;
+        tj.itens[2].worldY = 32 * tj.tileSize;
 
         tj.itens[3] = new ItemBau();
         tj.itens[3].worldX = 40 * tj.tileSize;
