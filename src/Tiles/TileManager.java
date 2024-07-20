@@ -1,6 +1,6 @@
 package Tiles;
 
-import main.Tela;
+import Telas.Tela;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -146,7 +146,7 @@ public class TileManager{
 }
 
 //
-//import main.Tela;
+//import Telas.Tela;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //

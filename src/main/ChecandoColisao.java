@@ -1,5 +1,6 @@
 package main;
 
+import Telas.Tela;
 import entity.Entity;
 
 public class ChecandoColisao {

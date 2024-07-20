@@ -1,7 +1,7 @@
 package entity;
 
 import main.KeyHandler;
-import main.Tela;
+import Telas.Tela;
 // acho que inimigo devia extender só de entity, não de personagem
 public class Inimigo extends Personagem{
 

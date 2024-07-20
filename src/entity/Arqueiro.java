@@ -1,7 +1,7 @@
 package entity;
 
 import main.KeyHandler;
-import main.Tela;
+import Telas.Tela;
 
 public class Arqueiro extends Personagem{
     public Arqueiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH) {
