@@ -25,7 +25,7 @@ public class ChecandoColisao {
                 entityTopRow = (entityTopWorldY - entity.speed)/tj.tileSize;
                 tileNum1 = tj.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = tj.tileM.mapTileNum[entityRightCol][entityTopRow];
-                if(tj.tileM.tile[tileNum1].collision == true || tj.tileM.tile[tileNum2].collision == true){
+                if(tj.tileM.tile[tileNum1].collision || tj.tileM.tile[tileNum2].collision){
                     entity.collisionOn = true;
                 }
                 break;
@@ -33,7 +33,7 @@ public class ChecandoColisao {
                 entityBottomRow = (entityBottomWorlY + entity.speed)/tj.tileSize;
                 tileNum1 = tj.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tileNum2 = tj.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if(tj.tileM.tile[tileNum1].collision == true || tj.tileM.tile[tileNum2].collision == true){
+                if(tj.tileM.tile[tileNum1].collision || tj.tileM.tile[tileNum2].collision){
                     entity.collisionOn = true;
                 }
                 break;
@@ -41,7 +41,7 @@ public class ChecandoColisao {
                 entityLeftCol = (entityLeftWorldX - entity.speed)/tj.tileSize;
                 tileNum1 = tj.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = tj.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                if(tj.tileM.tile[tileNum1].collision == true || tj.tileM.tile[tileNum2].collision == true){
+                if(tj.tileM.tile[tileNum1].collision || tj.tileM.tile[tileNum2].collision){
                     entity.collisionOn = true;
                 }
                 break;
@@ -49,7 +49,7 @@ public class ChecandoColisao {
                 entityRightCol = (entityRightWorldX + entity.speed)/tj.tileSize;
                 tileNum1 = tj.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tileNum2 = tj.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if(tj.tileM.tile[tileNum1].collision == true || tj.tileM.tile[tileNum2].collision == true){
+                if(tj.tileM.tile[tileNum1].collision || tj.tileM.tile[tileNum2].collision){
                     entity.collisionOn = true;
                 }
                 break;
@@ -58,7 +58,6 @@ public class ChecandoColisao {
     }
     public int checarItem(Entity entity, boolean jogador) {
         int index = 999;
-
 
         for (int i = 0; i < tj.itens.length; i++) {
             if (tj.itens[i] != null) {
@@ -72,13 +71,12 @@ public class ChecandoColisao {
                 switch (entity.direction) {
                     case "up":
                         entity.solidArea.y -= entity.speed;
-                        //metodo do Rectangle intersects: checa se os dois retangulos estão colidindo
-                        if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
+                        if (entity.solidArea.intersects(tj.itens[i].solidArea)) {//metodo do Rectangle intersects: checa se os dois retangulos estão colidindo
                             //checar se o item é solid ou não
-                            if (tj.itens[i].collision) {
+                            //if (tj.itens[i].collision) {
                                 entity.collisionOn = true;
-                            }
-                            if (jogador) {
+                            //}
+                            if (jogador) { //garantir que só o jogador pode pegar os itens
                                 index = i;
                             }
                         }
@@ -86,9 +84,9 @@ public class ChecandoColisao {
                     case "down":
                         entity.solidArea.y += entity.speed;
                         if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
-                            if (tj.itens[i].collision) {
+                           // if (tj.itens[i].collision) {
                                 entity.collisionOn = true;
-                            }
+                          //  }
                             if (jogador) {
                                 index = i;
                             }
@@ -97,10 +95,10 @@ public class ChecandoColisao {
                     case "left":
                         entity.solidArea.x -= entity.speed;
                         if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
-                            if (tj.itens[i].collision) {
+                           // if (tj.itens[i].collision) {
                                 entity.collisionOn = true;
                                 System.out.println("colisão left");
-                            }
+                            //}
                             if (jogador) {
                                 index = i;
                             }
@@ -109,9 +107,9 @@ public class ChecandoColisao {
                     case "right":
                         entity.solidArea.x += entity.speed;
                         if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
-                            if (tj.itens[i].collision) {
+                           // if (tj.itens[i].collision) {
                                 entity.collisionOn = true;
-                            }
+                           // }
                             if (jogador) {
                                 index = i;
                             }
