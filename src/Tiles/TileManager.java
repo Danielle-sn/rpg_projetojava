@@ -1,6 +1,6 @@
 package Tiles;
 
-import main.Tela;
+import Telas.Tela;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

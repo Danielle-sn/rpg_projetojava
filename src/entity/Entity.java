@@ -1,6 +1,6 @@
 package entity;
 
-import main.Tela;
+import Telas.Tela;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
