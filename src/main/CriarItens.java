@@ -1,5 +1,6 @@
 package main;
 
+import Itens.InEsqueleto;
 import Itens.ItemBau;
 import Itens.ItemKey;
 import Itens.ItemPorta;
@@ -25,6 +26,10 @@ public class CriarItens {
         tj.itens[3] = new ItemBau();
         tj.itens[3].worldX = 40 * tj.tileSize;
         tj.itens[3].worldY = 33 * tj.tileSize;
+
+        tj.itens[4] = new InEsqueleto();
+        tj.itens[4].worldX = 23 * tj.tileSize;
+        tj.itens[4].worldY = 23 * tj.tileSize;
 
     }
 }

@@ -11,12 +11,13 @@ public class ChecandoColisao {
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
         int entityTopWorldY = entity.worldY + entity.solidArea.y;
-        int entityBottomWorlY = entity.worldY + entity.solidArea.y + entity.solidArea.height;
+        int entityBottomWorldY = entity.worldY + entity.solidArea.y + entity.solidArea.height;
+
 
         int entityLeftCol = entityLeftWorldX/ tj.tileSize;
         int entityRightCol = entityRightWorldX/ tj.tileSize;
         int entityTopRow = entityTopWorldY/ tj.tileSize;
-        int entityBottomRow = entityBottomWorlY/ tj.tileSize;
+        int entityBottomRow = entityBottomWorldY/ tj.tileSize;
 
         int tileNum1, tileNum2;
 
@@ -30,7 +31,7 @@ public class ChecandoColisao {
                 }
                 break;
             case "down":
-                entityBottomRow = (entityBottomWorlY + entity.speed)/tj.tileSize;
+                entityBottomRow = (entityBottomWorldY + entity.speed)/tj.tileSize;
                 tileNum1 = tj.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tileNum2 = tj.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if(tj.tileM.tile[tileNum1].collision || tj.tileM.tile[tileNum2].collision){
