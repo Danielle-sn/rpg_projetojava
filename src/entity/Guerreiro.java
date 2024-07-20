@@ -13,16 +13,22 @@ public class Guerreiro extends Personagem{
     public final int screenX;
     public final int screenY;
 
+    int chaveColetada = 0;
+
     public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
         super(nome,saude,nivel, ataque, tj, keyH);
 
         screenX = tj.screenWidth/2 - (tj.tileSize/2);
         screenY = tj.screenHeight/2 - (tj.tileSize/2);
 
+
+
         //area de colisão do jogador
         solidArea = new Rectangle();
         solidArea.x = 9;
         solidArea.y = 9;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY =  solidArea.y;
         solidArea.width = 30;
         solidArea.height = 30;
 
@@ -71,6 +77,11 @@ public class Guerreiro extends Personagem{
             collisionOn = false;
             tj.checandoColisao.checarTile(this);
 
+            // checando a colisão com os objetos
+            int itemIndex = tj.checandoColisao.checarItem(this,true);
+            pegarItem(itemIndex);
+
+
             // se colisão é falsa, jogador pode se mover
             if(collisionOn == false){
                 switch(direction){
@@ -100,6 +111,27 @@ public class Guerreiro extends Personagem{
                 spriteCounter = 0;
         }
 
+        }
+    }
+    public void pegarItem(int i){
+        if (i != 999){
+           String itemName = tj.itens[i].name;
+
+           switch (itemName){
+               case "Chave":
+                   chaveColetada++;
+                   tj.itens[i] = null; // faz a chave desaparecer do mapa
+                   System.out.println("Chave"+ chaveColetada);
+                   break;
+               case "Porta":
+                   if(chaveColetada > 0){
+                       tj.itens[i] = null;
+                       chaveColetada--;
+                   }
+                   System.out.println("Chave"+ chaveColetada);
+                   break;
+
+           }
         }
     }
 

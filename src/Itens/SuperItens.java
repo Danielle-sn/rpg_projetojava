@@ -10,6 +10,9 @@ public class SuperItens {
     public String name;
     public boolean collision = false;
     public int worldX, worldY;
+    public Rectangle solidArea = new Rectangle(0,0,48,48); //a colisão será 16x16 com o objeto
+    public int solidAreaDefaultX = 0;
+    public int solidAreasDefaultY = 0;
 
     public void draw(Graphics2D g2, Tela tj){
         int screenX = worldX - tj.guerreiro.worldX + tj.guerreiro.screenX; // tirar a diferença entre as coordenadas da tela e do mapa

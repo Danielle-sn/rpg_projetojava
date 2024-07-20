@@ -11,6 +11,7 @@ public class ItemKey extends SuperItens {
         }catch(IOException e){
             e.printStackTrace();
         }
+        collision = true;
     }
 
 }

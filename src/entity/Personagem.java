@@ -9,18 +9,15 @@ public class Personagem extends Entity {
     private int saude;
     private int nivel;
     private int ataque;
-    Tela tj;
+
     KeyHandler keyH;
 
-
-
-
     public Personagem(String nome, int saude, int nivel, int ataque,  Tela tj, KeyHandler keyH) {
+        super(tj);
         this.nome = nome;
         this.saude = saude;
         this.nivel = nivel;
         this.ataque = ataque;
-        this.tj = tj;
         this.keyH = keyH;
     }
 
