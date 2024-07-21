@@ -19,7 +19,6 @@ public class KeyHandler  implements KeyListener{
         public void keyPressed(KeyEvent e) {
 
             int code = e.getKeyCode(); //retorna uma int da tecla pressionada
-
             if(code == KeyEvent.VK_W || code == KeyEvent.VK_UP ){
                 upPressed = true;
             }

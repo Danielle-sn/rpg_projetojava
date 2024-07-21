@@ -1,24 +1,31 @@
 package main;
 
+import Telas.GameFrame;
+import Telas.Tela;
+
 import javax.swing.JFrame;
 public class Main {
     public static void main(String[] args) {
 
-                JFrame window = new JFrame();
-                window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                window.setResizable(false); // não vai ser resizable
-                window.setTitle("Guardioes das Lendas Antigas");
+
+
+
+                GameFrame gameFrame = new GameFrame();
+                gameFrame.setVisible(true);
+                /*//JFrame window = new JFrame();
+                gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                gameFrame.setResizable(false); // não vai ser resizable
+                gameFrame.setTitle("Guardioes das Lendas Antigas");
 
                 Tela tela = new Tela();
-                window.add(tela);
+                gameFrame.add(tela);
 
-                window.pack();
 
-                window.setLocationRelativeTo(null); // vai estar no centro
-                window.setVisible(true);
+                gameFrame.setLocationRelativeTo(null); // vai estar no centro
+                gameFrame.setVisible(true);
 
                 tela.setupGame();
-                tela.startGameThred();
+                tela.startGameThred();*/
 
 
             }

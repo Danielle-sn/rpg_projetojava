@@ -1,4 +1,4 @@
-package main;
+package Telas;
 
 import Itens.ItemKey;
 

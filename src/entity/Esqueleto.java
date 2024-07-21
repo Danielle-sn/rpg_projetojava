@@ -1,7 +1,7 @@
 package entity;
 
 import main.KeyHandler;
-import main.Tela;
+import Telas.Tela;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,6 +1,6 @@
 package entity;
 
-import main.Tela;
+import Telas.Tela;
 import main.KeyHandler;
 
 import javax.imageio.ImageIO;
@@ -57,6 +57,7 @@ public class Guerreiro extends Personagem{
         }
     }
     public void update(){
+
         // esse método está  dentro do loop então é chamado 60 vezes por segundo
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
 
