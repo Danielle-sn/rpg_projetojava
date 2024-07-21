@@ -2,11 +2,13 @@ package entity;
 
 import Telas.Tela;
 import main.KeyHandler;
+import main.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Guerreiro extends Personagem{
 
@@ -42,19 +44,28 @@ public class Guerreiro extends Personagem{
         direction = "down";
     }
     public void getGuerreiro(){
-        try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_up2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_down1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_left1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_right2.png"));
 
-        } catch(IOException e){
+            up1 = configImagem("guerreiro_up1");
+            up2 = configImagem("guerreiro_up2");
+            down1 = configImagem("guerreiro_down1");
+            down2 = configImagem("guerreiro_down2");
+            left1 =  configImagem("guerreiro_left1");
+            left2 = configImagem("guerreiro_left2");
+            right1 = configImagem("guerreiro_right1");
+            right2 = configImagem("guerreiro_right2");
+    }
+
+    public BufferedImage configImagem(String imageName){
+        Utils ut = new Utils();
+        BufferedImage image = null;
+
+        try{
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Guerreiro/" + imageName + ".png")));
+            image = ut.scaleImage(image, tj.tileSize,tj.tileSize);
+        }catch (IOException e){
             e.printStackTrace();
         }
+        return image;
     }
     public void update(){
 
@@ -181,7 +192,7 @@ public class Guerreiro extends Personagem{
                 break;
 
         }
-        g2.drawImage(image, screenX, screenY, tj.tileSize, tj.tileSize, null);
+        g2.drawImage(image, screenX, screenY, null);
 
     }
 
