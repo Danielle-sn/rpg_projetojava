@@ -108,8 +108,16 @@ public class Tela extends JPanel implements Runnable{
 
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
+            //DEBUG
+            long drawStart = 0;
+            if(keyH.checkDrawTime ==true){
+                drawStart = System.nanoTime();
+            }
+
+
             //tile
             tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
+
             //itens
             for(int i = 0; i < itens.length; i++){
                 if(itens[i] != null){
@@ -118,9 +126,20 @@ public class Tela extends JPanel implements Runnable{
             }
             // jogador
             guerreiro.draw(g2);
+
             //interface
             iu.draw(g2);
+
+            //DEBUG
+            if(keyH.checkDrawTime == true) {
+                long drawEnd = System.nanoTime();
+                long passed = drawEnd - drawStart;
+                g2.setColor(Color.white);
+                g2.drawString("Draw Time:" + passed, 10, 400);
+                System.out.println("Draw Time:" + passed);
+            }
             //inimigos
+
            //esqueleto.draw(g2);
 
             g2.dispose();

@@ -1,6 +1,7 @@
 package Tiles;
 
 import Telas.Tela;
+import main.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class TileManager {
 
@@ -27,41 +29,31 @@ public class TileManager {
     }
 
     public void getTileImage() {
-        try {
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/grass_n.png"));
 
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/deadgrass_n.png"));
+        configImagem(0, "grass_n", false);
+        configImagem(1, "deadgrass_n", false);
+        configImagem(2, "water", true);
+        configImagem(3, "trees3", true);
+        configImagem(4, "trunk", true);
+        configImagem(5, "rock2", true);
+        configImagem(6, "rock3", true);
+        configImagem(7, "brink", false);
+    }
 
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/water.png"));
-            tile[2].collision = true;
+    //otimizando renderização do jogo
+    public void configImagem(int index, String imageName, boolean collision){
+        Utils ut = new Utils();
 
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/trees3.png"));
-            tile[3].collision = true;
+        try{
+            tile[index]= new Tile();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/" + imageName + ".png"));
+            tile[index].image = ut.scaleImage(tile[index].image,tj.tileSize, tj.tileSize);
+            tile[index].collision = collision;
 
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/trunk.png"));
-            tile[4].collision = true;
-
-            tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/rock2.png"));
-            tile[5].collision = true;
-
-            tile[6] = new Tile();
-            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/rock3.png"));
-            tile[6].collision = true;
-
-            tile[7] = new Tile();
-            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/brink.png"));
-
-        } catch (IOException e) {
+        }catch(IOException e){
             e.printStackTrace();
         }
     }
-
     public void loadMap(String filePath) {
         //ler o mapa
         try {
@@ -108,7 +100,8 @@ public class TileManager {
                     worldX - tj.tileSize < tj.guerreiro.worldX + tj.guerreiro.screenX &&
                     worldY + tj.tileSize > tj.guerreiro.worldY - tj.guerreiro.screenY &&
                     worldY - tj.tileSize < tj.guerreiro.worldY + tj.guerreiro.screenY) {
-                g2.drawImage(tile[tileNum].image, screenX, screenY, tj.tileSize, tj.tileSize, null);
+                g2.drawImage(tile[tileNum].image, screenX, screenY,null);
+
             }
             worldCol++;
             if (worldCol == tj.maxWorldCol) {

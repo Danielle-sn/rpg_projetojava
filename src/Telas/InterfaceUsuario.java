@@ -22,7 +22,7 @@ public class InterfaceUsuario {
         this.tj = tj;
         arial40 = new Font("Arial", Font.PLAIN, 40 ); // parâmetros: nome, estilo de fonte,tamanho da fonte
         arial80B = new Font("Arial", Font.PLAIN, 80 );
-        ItemKey chave = new ItemKey();
+        ItemKey chave = new ItemKey(tj);
         chaveImage = chave.image;
 
     }
