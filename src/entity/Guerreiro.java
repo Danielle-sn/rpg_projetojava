@@ -13,7 +13,7 @@ public class Guerreiro extends Personagem{
     public final int screenX;
     public final int screenY;
 
-    int chaveColetada = 0;
+    public int chaveColetada = 0;
 
     public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
         super(nome,saude,nivel, ataque, tj, keyH);
@@ -121,14 +121,20 @@ public class Guerreiro extends Personagem{
                case "Chave":
                    chaveColetada++;
                    tj.itens[i] = null; // faz a chave desaparecer do mapa
-                   System.out.println("Chave"+ chaveColetada);
+                   tj.iu.mostrarMensagem("Você pegou uma chave!");
                    break;
                case "Porta":
                    if(chaveColetada > 0){
                        tj.itens[i] = null;
                        chaveColetada--;
+                       tj.iu.mostrarMensagem("Parabéns, você abriu a porta");
+                   }else{
+                       tj.iu.mostrarMensagem("Colete a chave para abrir a porta");
                    }
                    System.out.println("Chave"+ chaveColetada);
+                   break;
+               case "Baú":
+                   tj.iu.finalJogo = true;
                    break;
 
            }
