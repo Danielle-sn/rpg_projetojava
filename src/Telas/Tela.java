@@ -48,10 +48,10 @@ public class Tela extends JPanel implements Runnable{
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
         public AssetSetter aSetter = new AssetSetter(this);
-        public InterfaceUsuario iu = new InterfaceUsuario(this);
+        public InterfaceUsuario iu = new InterfaceUsuario();
 
         //ENTIDADE E ITENS
-        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
+        //public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
         public Entity[] npc = new Entity[10];
@@ -152,61 +152,62 @@ public class Tela extends JPanel implements Runnable{
 
         }
 
-        public void paintComponent(Graphics g){ //metodo padrao
+//        public void paintComponent(Graphics g){ //metodo padrao
+//
+//                super.paintComponent(g);
+//                Graphics2D g2 = (Graphics2D) g;
+//                //DEBUG
+//                long drawStart = 0;
+//                if (keyH.checkDrawTime == true) {
+//                    drawStart = System.nanoTime();
+//                }
 
-            super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D)g;
-            //DEBUG
-            long drawStart = 0;
-            if(keyH.checkDrawTime ==true){
-                drawStart = System.nanoTime();
+
+                //tile
+//                tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
+//
+//                //itens
+//                for (int i = 0; i < itens.length; i++) {
+//                    if (itens[i] != null) {
+//                        itens[i].draw(g2, this);
+//                    }
+//                }
+//                //npc
+//                for (int i = 0; i < npc.length; i++) {
+//                    if (npc[i] != null) {
+//                        npc[i].draw(g2);
+//                    }
+//                }
+//
+//                // jogador
+//                guerreiro.draw(g2);
+//
+//                //interface
+//               // iu.draw(g2);
+//
+//            //DEBUG
+//            if(keyH.checkDrawTime == true) {
+//                long drawEnd = System.nanoTime();
+//                long passed = drawEnd - drawStart;
+//                g2.setColor(Color.white);
+//                g2.drawString("Draw Time:" + passed, 10, 400);
+//                System.out.println("Draw Time:" + passed);
+//            }
+//            //inimigos
+//
+//           //esqueleto.draw(g2);
+//
+//            g2.dispose();
+//        }
+//
+//    public void setVisible(boolean b) {
+//        super.setVisible(b);
+//        requestFocusInWindow(); // Foco painel (permite que  painel receba a entrada de taclas)
+//    }
+//
+//
+//}
+
+
             }
-
-
-            //tile
-            tileM.draw(g2); //o fundo tem que ser desenhado antes do personagem
-
-            //itens
-            for(int i = 0; i < itens.length; i++){
-                if(itens[i] != null){
-                    itens[i].draw(g2,this);
-                }
-            }
-            //npc
-            for(int i = 0; i<npc.length;i++){
-                if (npc[i] != null) {
-                    npc[i].draw(g2);
-                }
-                }
-
-            // jogador
-            guerreiro.draw(g2);
-
-            //interface
-            iu.draw(g2);
-
-/*
-            //DEBUG
-            if(keyH.checkDrawTime == true) {
-                long drawEnd = System.nanoTime();
-                long passed = drawEnd - drawStart;
-                g2.setColor(Color.white);
-                g2.drawString("Draw Time:" + passed, 10, 400);
-                System.out.println("Draw Time:" + passed);
-            }
-            //inimigos
-
-           //esqueleto.draw(g2);
-
-            g2.dispose();
         }
-
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        requestFocusInWindow(); // Foco painel (permite que  painel receba a entrada de taclas)
-    }
-
-
-}
-
-
