@@ -8,10 +8,12 @@ import javax.swing.JPanel;
 
 import Itens.SuperItens;
 import Tiles.TileManager;
+import entity.Esqueleto;
 import entity.Guerreiro;
 import main.ChecandoColisao;
 import main.CriarItens;
 import main.KeyHandler;
+import entity.Movimento;
 
 public class Tela extends JPanel implements Runnable{
 
@@ -35,16 +37,22 @@ public class Tela extends JPanel implements Runnable{
 
     //FPS
         int fps = 60;
+
     //SISTEMA
+
+        private Tela tj;
+
         public TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler(this);
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
         public CriarItens cItens = new CriarItens(this);
-        public InterfaceUsuario iu = new InterfaceUsuario(this);
+        //public InterfaceUsuario iu = new InterfaceUsuario(this);
+        public InterfaceUsuario iu = new InterfaceUsuario();
+
 
         //ENTIDADE E ITENS
-        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
+        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
 
@@ -52,6 +60,11 @@ public class Tela extends JPanel implements Runnable{
         public int gameState;
         public final int playState = 1;
         public final int pauseState = 2;
+
+        //public Guerreiro guerreiro;
+        public Esqueleto esqueleto;
+        public Movimento mov;
+        //public SuperItens[] itens = new SuperItens[10];
 
 
         public Tela() {
@@ -64,7 +77,14 @@ public class Tela extends JPanel implements Runnable{
         }
         public void setupGame(){
             cItens.setItem();
+
             gameState =  playState;
+
+            guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
+            esqueleto = new Esqueleto("esqueleto", 100, 1, 25, this, keyH);
+            mov = new Movimento(this, keyH, guerreiro);
+
+
         }
 
         public void startGameThred() {
@@ -109,17 +129,22 @@ public class Tela extends JPanel implements Runnable{
 
 
         public void update(){
+
             if(gameState == playState){
-                guerreiro.update();
+                mov.update();
             }
             if(gameState == playState){
                 //
+
+            if (mov != null) {
+                mov.update();
+
             }
 
         }
 
-        public void paintComponent(Graphics g){ //metodo padrao
 
+       /* public void paintComponent(Graphics g){ //metodo padrao
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
             //DEBUG
@@ -139,11 +164,13 @@ public class Tela extends JPanel implements Runnable{
                 }
             }
             // jogador
-            guerreiro.draw(g2);
+            guerreiro.draw(g2);*/
 
             //interface
-            iu.draw(g2);
+            //iu.draw(g2);
+                iu.draw();
 
+/*
             //DEBUG
             if(keyH.checkDrawTime == true) {
                 long drawEnd = System.nanoTime();
@@ -158,13 +185,13 @@ public class Tela extends JPanel implements Runnable{
 
             g2.dispose();
         }
-
-    public void setVisible(boolean b) {
+*/
+   /* public void setVisible(boolean b) {
         super.setVisible(b);
         requestFocusInWindow(); // Foco painel (permite que  painel receba a entrada de taclas)
-    }
+    }*/
 
 
-}
+}}
 
 

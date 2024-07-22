@@ -1,5 +1,7 @@
 package Telas;
 
+import entity.Guerreiro;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,13 +17,15 @@ public class GameFrame extends JFrame{
 
         //paineis
         telaJogo = new Tela();
-        MainMenuPanel menu = new MainMenuPanel(cardLayout, cards);
+        MainMenuPanel menu = new MainMenuPanel(this);
         //OptionsPanel options = new OptionsPanel();
+        TelaBatalha batalha = new TelaBatalha(this);
 
         //adicionando os paineis ao CardLayout
         cards.add(telaJogo, "Jogo");
         cards.add(menu, "Menu");
         //cards.add(options, "Opcoes");
+        cards.add(batalha, "Batalha");
 
         setLayout(new BorderLayout());
         add(cards, BorderLayout.CENTER);
@@ -50,5 +54,7 @@ public class GameFrame extends JFrame{
         super.setVisible(b);
         telaJogo.requestFocusInWindow();  // Solicita foco após o JFrame ser visível
     }
-
+    public void showPanel(String panelName) {
+        cardLayout.show(cards, panelName);
+    }
 }

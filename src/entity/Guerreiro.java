@@ -2,21 +2,18 @@ package entity;
 
 import Telas.Tela;
 import main.KeyHandler;
-import main.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Guerreiro extends Personagem{
 
     public final int screenX;
     public final int screenY;
 
-    //public int chaveColetada = 0;
-    //public int cristalColetado = 0;
+    int chaveColetada = 0;
 
     public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
         super(nome,saude,nivel, ataque, tj, keyH);
@@ -45,28 +42,19 @@ public class Guerreiro extends Personagem{
         direction = "down";
     }
     public void getGuerreiro(){
-
-            up1 = configImagem("guerreiro_up1");
-            up2 = configImagem("guerreiro_up2");
-            down1 = configImagem("guerreiro_down1");
-            down2 = configImagem("guerreiro_down2");
-            left1 =  configImagem("guerreiro_left1");
-            left2 = configImagem("guerreiro_left2");
-            right1 = configImagem("guerreiro_right1");
-            right2 = configImagem("guerreiro_right2");
-    }
-
-    public BufferedImage configImagem(String imageName){
-        Utils ut = new Utils();
-        BufferedImage image = null;
-
         try{
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Guerreiro/" + imageName + ".png")));
-            image = ut.scaleImage(image, tj.tileSize,tj.tileSize);
-        }catch (IOException e){
+            up1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_up1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_up2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_down1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_down2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_left1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_left2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_right1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_right2.png"));
+
+        } catch(IOException e){
             e.printStackTrace();
         }
-        return image;
     }
     public void update(){
 
@@ -128,34 +116,23 @@ public class Guerreiro extends Personagem{
     }
     public void pegarItem(int i){
         if (i != 999){
-//           String itemName = tj.itens[i].name;
-//
-//           switch (itemName){
-//               case "Chave":
-//                   chaveColetada++;
-//                   tj.itens[i] = null; // faz a chave desaparecer do mapa
-//                   tj.iu.mostrarMensagem("Você pegou uma chave!");
-//                   break;
-//               case "Cristal Mágico":
-//                   cristalColetado++;
-//                   tj.itens[i] = null; // faz a chave desaparecer do mapa
-//                   tj.iu.mostrarMensagem("Você pegou um cristal!");
-//                   break;
-//               case "Porta":
-//                   if(chaveColetada > 0){
-//                       tj.itens[i] = null;
-//                       chaveColetada--;
-//                       tj.iu.mostrarMensagem("Parabéns, você abriu a porta");
-//                   }else{
-//                       tj.iu.mostrarMensagem("Colete a chave para abrir a porta");
-//                   }
-//                   System.out.println("Chave"+ chaveColetada);
-//                   break;
-//               case "Baú":
-//                   tj.iu.finalJogo = true;
-//                   break;
-//
-//           }
+           String itemName = tj.itens[i].name;
+
+           switch (itemName){
+               case "Chave":
+                   chaveColetada++;
+                   tj.itens[i] = null; // faz a chave desaparecer do mapa
+                   System.out.println("Chave"+ chaveColetada);
+                   break;
+               case "Porta":
+                   if(chaveColetada > 0){
+                       tj.itens[i] = null;
+                       chaveColetada--;
+                   }
+                   System.out.println("Chave"+ chaveColetada);
+                   break;
+
+           }
         }
     }
 
@@ -198,7 +175,7 @@ public class Guerreiro extends Personagem{
                 break;
 
         }
-        g2.drawImage(image, screenX, screenY, null);
+        g2.drawImage(image, screenX, screenY, tj.tileSize, tj.tileSize, null);
 
     }
 

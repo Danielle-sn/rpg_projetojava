@@ -13,7 +13,7 @@ public class ItemBau  extends SuperItens{
         name = "Baú";
         try{
             image = ImageIO.read(getClass().getResourceAsStream("/itens/chests.png"));
-            ut.scaleImage(image,tj.tileSize,tj.tileSize);
+           // ut.scaleImage(image,tj.tileSize,tj.tileSize);
         }catch(IOException e){
             e.printStackTrace();
         }

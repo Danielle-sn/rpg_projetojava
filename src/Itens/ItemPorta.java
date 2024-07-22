@@ -13,7 +13,7 @@ public class ItemPorta extends SuperItens {
             name = "Porta";
             try{
                 image = ImageIO.read(getClass().getResourceAsStream("/itens/house_resources.png"));
-                ut.scaleImage(image,tj.tileSize,tj.tileSize);
+               // ut.scaleImage(image,tj.tileSize,tj.tileSize);
             }catch(IOException e){
                 e.printStackTrace();
             }
