@@ -8,13 +8,10 @@ import javax.swing.JPanel;
 
 import Itens.SuperItens;
 import Tiles.TileManager;
-import entity.Entity;
-import entity.Esqueleto;
-import entity.Guerreiro;
+import entity.*;
 import main.ChecandoColisao;
 import main.CriarItens;
 import main.KeyHandler;
-import entity.Movimento;
 
 public class Tela extends JPanel implements Runnable{
 
@@ -47,6 +44,7 @@ public class Tela extends JPanel implements Runnable{
         public CriarItens cItens = new CriarItens(this);
         public Guerreiro guerreiro;
         public Esqueleto esqueleto;
+        public Feiticeira feiticeira;
         public Movimento mov;
         public SuperItens[] itens = new SuperItens[10];
 
@@ -63,6 +61,7 @@ public class Tela extends JPanel implements Runnable{
             cItens.setItem();
 
             guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
+            feiticeira = new Feiticeira("Lyra", 90, 1, 3, 4,5, 6, 7, 8, 8, this, keyH);
             esqueleto = new Esqueleto("esqueleto", 100, 1, 25, this, keyH);
             mov = new Movimento(this, keyH, guerreiro);
 
@@ -131,6 +130,7 @@ public class Tela extends JPanel implements Runnable{
             }
             // jogador
             guerreiro.draw(g2);
+            feiticeira.draw(g2);
             //inimigos
            //esqueleto.draw(g2);
 
