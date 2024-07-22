@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 
 import Itens.SuperItens;
 import Tiles.TileManager;
+import entity.Entity;
 import entity.Esqueleto;
 import entity.Guerreiro;
 import main.ChecandoColisao;
 import main.CriarItens;
 import main.KeyHandler;
+import entity.Movimento;
 
 public class Tela extends JPanel implements Runnable{
 
@@ -37,14 +39,17 @@ public class Tela extends JPanel implements Runnable{
     //FPS
         int fps = 60;
 
+        private Tela tj;
         public TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler();
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
         public CriarItens cItens = new CriarItens(this);
-        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
-        public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
+        public Guerreiro guerreiro;
+        public Esqueleto esqueleto;
+        public Movimento mov;
         public SuperItens[] itens = new SuperItens[10];
+
 
         public Tela() {
             this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -56,6 +61,11 @@ public class Tela extends JPanel implements Runnable{
         }
         public void setupGame(){
             cItens.setItem();
+
+            guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
+            esqueleto = new Esqueleto("esqueleto", 100, 1, 25, this, keyH);
+            mov = new Movimento(this, keyH, guerreiro);
+
         }
 
         public void startGameThred() {
@@ -100,8 +110,10 @@ public class Tela extends JPanel implements Runnable{
 
 
         public void update(){
+            if (mov != null) {
+                mov.update();
+            }
 
-            guerreiro.update();
         }
 
         public void paintComponent(Graphics g){ //metodo padrao

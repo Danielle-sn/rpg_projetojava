@@ -17,6 +17,9 @@ public class TelaBatalha extends JPanel {
     private BufferedImage esqueletoImage;
     private int gridSize = 50;
 
+    private JLabel guerreiroVidaLabel;
+    private JLabel esqueletoVidaLabel;
+
     public TelaBatalha(GameFrame gameFrame) {
         this.gameFrame = gameFrame;
         setLayout(new BorderLayout()); // BorderLayout: north, south, east, west, center
@@ -101,13 +104,32 @@ public class TelaBatalha extends JPanel {
         });
 
 
-
-
-
         buttonsGrid.add(inventarioButton);
         buttonsGrid.add(atacarButton); // Adicionar o botão de defender aqui
 
         add(buttonsGrid, BorderLayout.SOUTH);
+
+        guerreiroVidaLabel = new JLabel("Hp Guerreiro: 100");
+        esqueletoVidaLabel = new JLabel("Hp esqueleto: 100");
+
+        JPanel valoresPanel = new JPanel();
+        valoresPanel.setLayout(new GridLayout(2,1));
+        valoresPanel.add(guerreiroVidaLabel);
+        valoresPanel.add(esqueletoVidaLabel);
+        add(valoresPanel, BorderLayout.EAST);
+
+        atacarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Atualiza os valores de vida (exemplo)
+                guerreiroVidaLabel.setText("Vida do Guerreiro: " + (int) (Math.random() * 100));
+                esqueletoVidaLabel.setText("Vida do Esqueleto: " + (int) (Math.random() * 100));
+            }
+        });
+
+
+
+
 
         // Carregar imagens
         try {

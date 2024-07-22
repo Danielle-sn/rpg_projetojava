@@ -8,19 +8,23 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Guerreiro extends Personagem{
+public class Guerreiro extends Entity{
+
+    private Movimento mov;
+
 
     public final int screenX;
     public final int screenY;
 
-    int chaveColetada = 0;
 
-    public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
-        super(nome,saude,nivel, ataque, tj, keyH);
+    public Guerreiro(String nome, int forca, int agilidade, int dexterity, int ataque, int nivel, int saude, int exp, int nextLevelExp, int currentWeapon, Tela tj, KeyHandler keyH) {
+        super(nome, forca, agilidade, dexterity, ataque, nivel, saude, exp, nextLevelExp, currentWeapon, tj,  keyH);
 
         screenX = tj.screenWidth/2 - (tj.tileSize/2);
         screenY = tj.screenHeight/2 - (tj.tileSize/2);
 
+
+        mov = new Movimento(tj, keyH, this);
 
 
         //area de colisão do jogador
@@ -32,15 +36,41 @@ public class Guerreiro extends Personagem{
         solidArea.width = 30;
         solidArea.height = 30;
 
-        setDefaultValues();
+        mov.setDefaultValues();
         getGuerreiro();
+
     }
-    public void setDefaultValues(){
+
+    //int chaveColetada = 0;
+
+
+
+    /* public Guerreiro(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH){
+         super(nome,saude,nivel, ataque, tj, keyH);
+
+         screenX = tj.screenWidth/2 - (tj.tileSize/2);
+         screenY = tj.screenHeight/2 - (tj.tileSize/2);
+
+
+
+         //area de colisão do jogador
+         solidArea = new Rectangle();
+         solidArea.x = 9;
+         solidArea.y = 9;
+         solidAreaDefaultX = solidArea.x;
+         solidAreaDefaultY =  solidArea.y;
+         solidArea.width = 30;
+         solidArea.height = 30;
+
+         setDefaultValues();
+         getGuerreiro();
+     }*/
+   /* public void setDefaultValues(){
         worldX = tj.tileSize * 23;
         worldY = tj.tileSize * 21;
         speed = 4;
         direction = "down";
-    }
+    }*/
     public void getGuerreiro(){
         try{
             up1 = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/guerreiro_up1.png"));
@@ -56,7 +86,7 @@ public class Guerreiro extends Personagem{
             e.printStackTrace();
         }
     }
-    public void update(){
+    /*public void update(){
 
         // esse método está  dentro do loop então é chamado 60 vezes por segundo
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
@@ -113,8 +143,8 @@ public class Guerreiro extends Personagem{
         }
 
         }
-    }
-    public void pegarItem(int i){
+    }*/
+   /* public void pegarItem(int i){
         if (i != 999){
            String itemName = tj.itens[i].name;
 
@@ -134,12 +164,15 @@ public class Guerreiro extends Personagem{
 
            }
         }
-    }
+    }*/
 
     public void draw(Graphics2D g2){
         //g2.setColor(Color.white);
         //g2.fillRect(x, y, tj.tileSize, tj.tileSize);
+
         BufferedImage image = null;
+
+        Movimento mov;
         switch(direction){
             case "up":
             if (spriteNum == 1){
@@ -177,6 +210,7 @@ public class Guerreiro extends Personagem{
         }
         g2.drawImage(image, screenX, screenY, tj.tileSize, tj.tileSize, null);
 
-    }
+    }}
 
-}
+
+
