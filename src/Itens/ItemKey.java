@@ -13,7 +13,7 @@ public class ItemKey extends SuperItens {
         name = "Chave";
         try{
             image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/itens/fireball.png")));
-            ut.scaleImage(image,tj.tileSize,tj.tileSize);
+           // ut.scaleImage(image,tj.tileSize,tj.tileSize);
         }catch(IOException e){
             e.printStackTrace();
         }

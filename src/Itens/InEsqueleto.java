@@ -12,7 +12,7 @@ public class InEsqueleto extends SuperItens{
         name = "esq";
         try{
             image = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_down1.png"));
-            ut.scaleImage(image,tj.tileSize,tj.tileSize);
+            //ut.scaleImage(image,tj.tileSize,tj.tileSize);
         }catch(IOException e){
             e.printStackTrace();
         }

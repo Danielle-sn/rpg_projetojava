@@ -9,10 +9,12 @@ import javax.swing.JPanel;
 import Itens.SuperItens;
 import Tiles.TileManager;
 import entity.Entity;
+//import entity.Esqueleto;
 import entity.Guerreiro;
 import main.ChecandoColisao;
 import main.AssetSetter;
 import main.KeyHandler;
+import entity.Movimento;
 
 public class Tela extends JPanel implements Runnable{
 
@@ -36,7 +38,11 @@ public class Tela extends JPanel implements Runnable{
 
     //FPS
         int fps = 60;
+
     //SISTEMA
+
+        private Tela tj;
+
         public TileManager tileM = new TileManager(this);
         KeyHandler keyH = new KeyHandler(this);
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
@@ -45,7 +51,7 @@ public class Tela extends JPanel implements Runnable{
         public InterfaceUsuario iu = new InterfaceUsuario(this);
 
         //ENTIDADE E ITENS
-        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
+        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
         public Entity[] npc = new Entity[10];
@@ -54,6 +60,11 @@ public class Tela extends JPanel implements Runnable{
         public int gameState;
         public final int playState = 1;
         public final int pauseState = 2;
+
+        //public Guerreiro guerreiro;
+        //public Esqueleto esqueleto;
+        public Movimento mov;
+        //public SuperItens[] itens = new SuperItens[10];
 
 
         public Tela() {
@@ -68,6 +79,12 @@ public class Tela extends JPanel implements Runnable{
             aSetter.setItem();
             aSetter.setNPCfazendeiro();
             gameState =  playState;
+
+
+            //guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
+            //esqueleto = new Esqueleto("esqueleto", 100, 1, 25, this, keyH);
+            //mov = new Movimento(this, keyH, guerreiro);
+
 
         }
 
@@ -113,9 +130,11 @@ public class Tela extends JPanel implements Runnable{
 
 
         public void update(){
+
             if(gameState == playState){
                 //jogador
-                guerreiro.update();
+                mov.update();
+                //guerreiro.update();
                 //npc
                 for(int i = 0; i < npc.length; i++){
                     if(npc[i] != null){
@@ -125,6 +144,10 @@ public class Tela extends JPanel implements Runnable{
             }
             if(gameState == playState){
                 //
+
+            if (mov != null) {
+                mov.update();
+
             }
 
         }
@@ -162,6 +185,7 @@ public class Tela extends JPanel implements Runnable{
             //interface
             iu.draw(g2);
 
+/*
             //DEBUG
             if(keyH.checkDrawTime == true) {
                 long drawEnd = System.nanoTime();

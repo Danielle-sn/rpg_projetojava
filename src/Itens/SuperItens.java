@@ -1,7 +1,7 @@
 package Itens;
 
 import Telas.Tela;
-import main.Utils;
+//import main.Utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,7 +14,7 @@ public class SuperItens {
     public Rectangle solidArea = new Rectangle(0,0,48,48); //a colisão será 16x16 com o objeto
     public int solidAreaDefaultX = 0;
     public int solidAreasDefaultY = 0;
-    Utils ut = new Utils();
+  //  Utils ut = new Utils();
 
     public void draw(Graphics2D g2, Tela tj){
         int screenX = worldX - tj.guerreiro.worldX + tj.guerreiro.screenX; // tirar a diferença entre as coordenadas da tela e do mapa

@@ -10,6 +10,8 @@ public class Jogador extends Entity {
     private int nivel;
     private int ataque;
 
+
+
     KeyHandler keyH;
 
     public Jogador(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH) {
@@ -62,5 +64,6 @@ public class Jogador extends Entity {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 
 }

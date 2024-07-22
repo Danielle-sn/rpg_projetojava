@@ -8,9 +8,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Objects;
+//import java.util.Objects;
 
-public class Guerreiro extends Jogador {
+public class Guerreiro extends Jogador { //Personagem
 
     public final int screenX;
     public final int screenY;

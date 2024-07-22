@@ -1,5 +1,10 @@
 package main;
 
+//import Itens.InEsqueleto;
+//import Itens.ItemBau;
+//import Itens.ItemKey;
+//import Itens.ItemCristal;
+//import Itens.ItemPorta;
 import Telas.Tela;
 import entity.NPC_fazendeiro;
 
