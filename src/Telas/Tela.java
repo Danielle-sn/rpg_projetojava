@@ -112,6 +112,12 @@ public class Tela extends JPanel implements Runnable{
             if (mov != null) {
                 mov.update();
             }
+            if (feiticeira != null) {
+                feiticeira.mov.update();
+            }
+            if (guerreiro != null) {
+                guerreiro.mov.update();
+            }
 
         }
 

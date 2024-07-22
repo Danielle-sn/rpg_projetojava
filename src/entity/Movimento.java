@@ -24,7 +24,7 @@ public class Movimento {
     }
 
     public void update(){
-        System.out.println("Atualizando movimento...");
+       // System.out.println("Atualizando movimento...");
         if (tj == null) {
             System.out.println("Tela não foi inicializada.");
             return;
