@@ -20,7 +20,7 @@ public class TileManager {
     public TileManager(Tela tj) {
 
         this.tj = tj;
-        tile = new Tile[10];
+        tile = new Tile[50];
         mapTileNum = new int[tj.maxWorldCol][tj.maxWorldRow];
 
 
@@ -30,14 +30,37 @@ public class TileManager {
 
     public void getTileImage() {
 
-        configImagem(0, "grass_n", false);
-        configImagem(1, "deadgrass_n", false);
-        configImagem(2, "water", true);
-        configImagem(3, "trees3", true);
-        configImagem(4, "trunk", true);
-        configImagem(5, "rock2", true);
-        configImagem(6, "rock3", true);
-        configImagem(7, "brink", false);
+        configImagem(0, "deadgrass_lisa", false);
+        configImagem(1, "deadgrass_lisa", false);
+        configImagem(2, "deadgrass_lisa", false);
+        configImagem(3, "deadgrass_lisa", false);
+        configImagem(4, "deadgrass_lisa", false);
+        configImagem(5, "deadgrass_lisa", false);
+        configImagem(6, "deadgrass_lisa", false);
+        configImagem(7, "deadgrass_lisa", false);
+        configImagem(8, "deadgrass_lisa", false);
+        configImagem(9, "deadgrass_lisa", false);
+        configImagem(10, "deadgrass_n", false);
+        configImagem(11, "grass_detalhe", false);
+        configImagem(12, "grass_lisa", false);
+        configImagem(13, "trees3", true);
+        configImagem(14, "trunk", true);
+        configImagem(15, "water_lisa", true);
+        configImagem(16, "water_borda_id", true);
+        configImagem(17, "water_borda_ie", true);
+        configImagem(18, "water_borda_sd", true);
+        configImagem(19, "water_borda_se", true);
+        configImagem(20, "water_dinferior", true);
+        configImagem(21, "water_dsuperior", true);
+        configImagem(22, "water_einferior", true);
+        configImagem(23, "water_esuperior", true);
+        configImagem(24, "water_meiodireita", true);
+        configImagem(25, "water_meioesquerdo", true);
+        configImagem(26, "water_meioinferior", true);
+        configImagem(27, "water_meiosuperior", true);
+        configImagem(28, "water_textura", true);
+        configImagem(29, "house", true);
+
     }
 
     //otimizando renderização do jogo
@@ -46,7 +69,7 @@ public class TileManager {
 
         try{
             tile[index]= new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/Tiles/" + imageName + ".png"));
+            tile[index].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Tiles/" + imageName + ".png")));
             tile[index].image = ut.scaleImage(tile[index].image,tj.tileSize, tj.tileSize);
             tile[index].collision = collision;
 
@@ -101,6 +124,7 @@ public class TileManager {
                     worldY + tj.tileSize > tj.guerreiro.worldY - tj.guerreiro.screenY &&
                     worldY - tj.tileSize < tj.guerreiro.worldY + tj.guerreiro.screenY) {
                 g2.drawImage(tile[tileNum].image, screenX, screenY,null);
+                System.out.println("coluna:"+worldCol+"li"+worldRow+"ima"+tileNum);
 
             }
             worldCol++;

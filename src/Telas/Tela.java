@@ -35,16 +35,24 @@ public class Tela extends JPanel implements Runnable{
 
     //FPS
         int fps = 60;
-    //Sistema
+    //SISTEMA
         public TileManager tileM = new TileManager(this);
-        KeyHandler keyH = new KeyHandler();
+        KeyHandler keyH = new KeyHandler(this);
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
         public CriarItens cItens = new CriarItens(this);
         public InterfaceUsuario iu = new InterfaceUsuario(this);
+
+        //ENTIDADE E ITENS
         public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
+
+        //ESTADO DO JOGO
+        public int gameState;
+        public final int playState = 1;
+        public final int pauseState = 2;
+
 
         public Tela() {
             this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -56,6 +64,7 @@ public class Tela extends JPanel implements Runnable{
         }
         public void setupGame(){
             cItens.setItem();
+            gameState =  playState;
         }
 
         public void startGameThred() {
@@ -100,8 +109,13 @@ public class Tela extends JPanel implements Runnable{
 
 
         public void update(){
+            if(gameState == playState){
+                guerreiro.update();
+            }
+            if(gameState == playState){
+                //
+            }
 
-            guerreiro.update();
         }
 
         public void paintComponent(Graphics g){ //metodo padrao
