@@ -1,18 +1,14 @@
 package main;
 
-import Itens.InEsqueleto;
-import Itens.ItemBau;
-import Itens.ItemKey;
-import Itens.ItemCristal;
-import Itens.ItemPorta;
 import Telas.Tela;
+import entity.NPC_fazendeiro;
 
-public class CriarItens {
+public class AssetSetter {
     Tela tj;
-    public CriarItens(Tela tj){
+    public AssetSetter(Tela tj){
         this.tj = tj;
     }
-    public void setItem(){
+    public void setItem() {
 //        tj.itens[0] = new ItemKey(tj);
 //        tj.itens[0].worldX = 40 * tj.tileSize;
 //        tj.itens[0].worldY = 9 * tj.tileSize;
@@ -37,5 +33,10 @@ public class CriarItens {
 //        tj.itens[5].worldX = 21 * tj.tileSize;
 //        tj.itens[5].worldY = 20 * tj.tileSize;
 
+    }
+    public void setNPCfazendeiro(){
+        tj.npc[0]= new NPC_fazendeiro(tj);
+        tj.npc[0].worldX = tj.tileSize*21;
+        tj.npc[0].worldY = tj.tileSize*21;
     }
 }

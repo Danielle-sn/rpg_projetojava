@@ -8,9 +8,10 @@ import javax.swing.JPanel;
 
 import Itens.SuperItens;
 import Tiles.TileManager;
+import entity.Entity;
 import entity.Guerreiro;
 import main.ChecandoColisao;
-import main.CriarItens;
+import main.AssetSetter;
 import main.KeyHandler;
 
 public class Tela extends JPanel implements Runnable{
@@ -40,13 +41,14 @@ public class Tela extends JPanel implements Runnable{
         KeyHandler keyH = new KeyHandler(this);
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
-        public CriarItens cItens = new CriarItens(this);
+        public AssetSetter aSetter = new AssetSetter(this);
         public InterfaceUsuario iu = new InterfaceUsuario(this);
 
         //ENTIDADE E ITENS
         public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
+        public Entity[] npc = new Entity[10];
 
         //ESTADO DO JOGO
         public int gameState;
@@ -63,8 +65,10 @@ public class Tela extends JPanel implements Runnable{
             this.requestFocusInWindow();
         }
         public void setupGame(){
-            cItens.setItem();
+            aSetter.setItem();
+            aSetter.setNPCfazendeiro();
             gameState =  playState;
+
         }
 
         public void startGameThred() {
@@ -110,7 +114,14 @@ public class Tela extends JPanel implements Runnable{
 
         public void update(){
             if(gameState == playState){
+                //jogador
                 guerreiro.update();
+                //npc
+                for(int i = 0; i < npc.length; i++){
+                    if(npc[i] != null){
+                        npc[i].update();
+                    }
+                }
             }
             if(gameState == playState){
                 //
@@ -138,6 +149,13 @@ public class Tela extends JPanel implements Runnable{
                     itens[i].draw(g2,this);
                 }
             }
+            //npc
+            for(int i = 0; i<npc.length;i++){
+                if (npc[i] != null) {
+                    npc[i].draw(g2);
+                }
+                }
+
             // jogador
             guerreiro.draw(g2);
 

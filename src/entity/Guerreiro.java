@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Guerreiro extends Personagem{
+public class Guerreiro extends Jogador {
 
     public final int screenX;
     public final int screenY;
@@ -46,28 +46,17 @@ public class Guerreiro extends Personagem{
     }
     public void getGuerreiro(){
 
-            up1 = configImagem("guerreiro_up1");
-            up2 = configImagem("guerreiro_up2");
-            down1 = configImagem("guerreiro_down1");
-            down2 = configImagem("guerreiro_down2");
-            left1 =  configImagem("guerreiro_left1");
-            left2 = configImagem("guerreiro_left2");
-            right1 = configImagem("guerreiro_right1");
-            right2 = configImagem("guerreiro_right2");
+            up1 = configImagem("/Guerreiro/guerreiro_up1");
+            up2 = configImagem("/Guerreiro/guerreiro_up2");
+            down1 = configImagem("/Guerreiro/guerreiro_down1");
+            down2 = configImagem("/Guerreiro/guerreiro_down2");
+            left1 =  configImagem("/Guerreiro/guerreiro_left1");
+            left2 = configImagem("/Guerreiro/guerreiro_left2");
+            right1 = configImagem("/Guerreiro/guerreiro_right1");
+            right2 = configImagem("/Guerreiro/guerreiro_right2");
     }
 
-    public BufferedImage configImagem(String imageName){
-        Utils ut = new Utils();
-        BufferedImage image = null;
 
-        try{
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Guerreiro/" + imageName + ".png")));
-            image = ut.scaleImage(image, tj.tileSize,tj.tileSize);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        return image;
-    }
     public void update(){
 
         // esse método está  dentro do loop então é chamado 60 vezes por segundo
@@ -93,6 +82,10 @@ public class Guerreiro extends Personagem{
             // checando a colisão com os objetos
             int itemIndex = tj.checandoColisao.checarItem(this,true);
             pegarItem(itemIndex);
+
+            //checando colisão com o npc
+            int npcIndex = tj.checandoColisao.checarEntity(this,tj.npc);
+            interacaoNpc(npcIndex);
 
 
             // se colisão é falsa, jogador pode se mover
@@ -158,6 +151,13 @@ public class Guerreiro extends Personagem{
 //           }
         }
     }
+    public void interacaoNpc(int i){
+        if(i != 999){
+            System.out.println("tocando o npc");
+
+        }
+    }
+
 
     public void draw(Graphics2D g2){
         //g2.setColor(Color.white);

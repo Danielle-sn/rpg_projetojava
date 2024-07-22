@@ -8,6 +8,7 @@ public class ChecandoColisao {
     public ChecandoColisao(Tela tj){
         this.tj =tj;
     }
+
     public void checarTile(Entity entity){
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
@@ -126,6 +127,111 @@ public class ChecandoColisao {
         }
         return index;
         //checar se o jogador está tocando em algum item, se estiver vai retornar o index
+    }
+    public int checarEntity(Entity entity, Entity[] alvo){
+        int index = 999;
+
+        for (int i = 0; i < alvo.length; i++) {
+            if (alvo[i] != null) {
+                // pegar entity solid area position
+                entity.solidArea.x = entity.worldX + entity.solidArea.x;
+                entity.solidArea.y = entity.worldY + entity.solidArea.y;
+                // pegar object solid area position
+                alvo[i].solidArea.x = alvo[i].worldX + alvo[i].solidArea.x;
+                alvo[i].solidArea.y = alvo[i].worldY + alvo[i].solidArea.y;
+
+                switch (entity.direction) {
+                    case "up":
+                        entity.solidArea.y -= entity.speed;
+                        if (entity.solidArea.intersects(alvo[i].solidArea)) {//metodo do Rectangle intersects: checa se os dois retangulos estão colidindo
+                            //checar se o item é solid ou não
+                            //if (tj.itens[i].collision) {
+                            entity.collisionOn = true;
+                            //}
+                                index = i;
+                        }
+                        break;
+                    case "down":
+                        entity.solidArea.y += entity.speed;
+                        if (entity.solidArea.intersects(alvo[i].solidArea)) {
+                            // if (tj.itens[i].collision) {
+                            entity.collisionOn = true;
+                            //  }
+                                index = i;
+                        }
+                        break;
+                    case "left":
+                        entity.solidArea.x -= entity.speed;
+                        if (entity.solidArea.intersects(alvo[i].solidArea)) {
+                            // if (tj.itens[i].collision) {
+                            entity.collisionOn = true;
+                            System.out.println("colisão left");
+                            //}
+                                index = i;
+                        }
+                        break;
+                    case "right":
+                        entity.solidArea.x += entity.speed;
+                        if (entity.solidArea.intersects(alvo[i].solidArea)) {
+                            // if (tj.itens[i].collision) {
+                            entity.collisionOn = true;
+                            // }
+                                index = i;
+                        }
+                        break;
+                }
+                entity.solidArea.x = entity.solidAreaDefaultX;
+                entity.solidArea.y = entity.solidAreaDefaultY;
+                alvo[i].solidArea.x = alvo[i].solidAreaDefaultX;
+                alvo[i].solidArea.y = alvo[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+
+
+    }
+    public void checarJogador(Entity entity) {
+        int index = 999;
+        // pegar entity solid area position
+        entity.solidArea.x = entity.worldX + entity.solidArea.x;
+        entity.solidArea.y = entity.worldY + entity.solidArea.y;
+        // pegar object solid area position
+        tj.guerreiro.solidArea.x = tj.guerreiro.worldX + tj.guerreiro.solidArea.x;
+        tj.guerreiro.solidArea.y = tj.guerreiro.worldY + tj.guerreiro.solidArea.y;
+
+        switch (entity.direction) {
+            case "up":
+                entity.solidArea.y -= entity.speed;
+                if (entity.solidArea.intersects(tj.guerreiro.solidArea)) {//metodo do Rectangle intersects: checa se os dois retangulos estão colidindo
+                    entity.collisionOn = true;
+                }
+                break;
+            case "down":
+                entity.solidArea.y += entity.speed;
+                if (entity.solidArea.intersects(tj.guerreiro.solidArea)) {
+                    entity.collisionOn = true;
+                }
+                break;
+            case "left":
+                entity.solidArea.x -= entity.speed;
+                if (entity.solidArea.intersects(tj.guerreiro.solidArea)) {
+                    entity.collisionOn = true;
+                    System.out.println("colisão left");
+                }
+                break;
+            case "right":
+                entity.solidArea.x += entity.speed;
+                if (entity.solidArea.intersects(tj.guerreiro.solidArea)) {
+                    entity.collisionOn = true;
+                }
+                break;
+        }
+        entity.solidArea.x = entity.solidAreaDefaultX;
+        entity.solidArea.y = entity.solidAreaDefaultY;
+        tj.guerreiro.solidArea.x = tj.guerreiro.solidAreaDefaultX;
+        tj.guerreiro.solidArea.y = tj.guerreiro.solidAreaDefaultY;
+
+
 
 
     }

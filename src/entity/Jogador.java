@@ -3,7 +3,7 @@ package entity;
 import main.KeyHandler;
 import Telas.Tela;
 
-public class Personagem extends Entity {
+public class Jogador extends Entity {
 
     private String nome;
     private int saude;
@@ -12,7 +12,7 @@ public class Personagem extends Entity {
 
     KeyHandler keyH;
 
-    public Personagem(String nome, int saude, int nivel, int ataque,  Tela tj, KeyHandler keyH) {
+    public Jogador(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH) {
         super(tj);
         this.nome = nome;
         this.saude = saude;

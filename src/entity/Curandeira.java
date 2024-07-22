@@ -3,7 +3,7 @@ package entity;
 import main.KeyHandler;
 import Telas.Tela;
 
-public class Curandeira extends Personagem {
+public class Curandeira extends Jogador {
     public Curandeira(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH) {
         super(nome, saude, nivel, ataque, tj, keyH);
     }
