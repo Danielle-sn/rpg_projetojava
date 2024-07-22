@@ -52,8 +52,11 @@ public class Tela extends JPanel implements Runnable{
 
 
         //ENTIDADE E ITENS
-        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
-        //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
+        /*public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
+        //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);*/
+        public Guerreiro guerreiro;
+        public Esqueleto esqueleto;
+        public Movimento mov;
         public SuperItens[] itens = new SuperItens[10];
 
         //ESTADO DO JOGO
