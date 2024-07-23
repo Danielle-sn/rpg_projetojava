@@ -124,7 +124,7 @@ public class TileManager {
                     worldY + tj.tileSize > tj.guerreiro.worldY - tj.guerreiro.screenY &&
                     worldY - tj.tileSize < tj.guerreiro.worldY + tj.guerreiro.screenY) {
                 g2.drawImage(tile[tileNum].image, screenX, screenY,null);
-                System.out.println("coluna:"+worldCol+"li"+worldRow+"ima"+tileNum);
+                //System.out.println("coluna:"+worldCol+"li"+worldRow+"ima"+tileNum);
 
             }
             worldCol++;

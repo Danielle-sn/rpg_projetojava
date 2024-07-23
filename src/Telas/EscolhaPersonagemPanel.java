@@ -8,9 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-
 public class EscolhaPersonagemPanel extends JPanel {
-
     private GameFrame gameFrame;
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -197,7 +195,7 @@ public class EscolhaPersonagemPanel extends JPanel {
 
 
 
-    JButton prevButton = new JButton("Anterior");
+        JButton prevButton = new JButton("Anterior");
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

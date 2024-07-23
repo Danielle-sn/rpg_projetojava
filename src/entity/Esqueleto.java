@@ -13,11 +13,21 @@ public class Esqueleto extends Inimigo {
 //    public final int screenX;
 //    public final int screenY;
 
-    public Esqueleto(String nome, int saude, int nivel, int ataque, Tela tj, KeyHandler keyH) {
-        super(nome, saude, nivel, ataque, tj, keyH);
+    public Esqueleto(String nome, int forca, int agilidade, int dexterity, int ataque, int nivel, int saude, int exp, int nextLevelExp, int currentWeapon, Tela tj, KeyHandler keyH) {
+        super(nome, forca, agilidade, dexterity, ataque, nivel, saude, exp, nextLevelExp, currentWeapon, tj, keyH);
+
 
         direction = "down";
         speed = 1;
+
+        //area de colisão do jogador
+        solidArea = new Rectangle();
+        solidArea.x = 9;
+        solidArea.y = 9;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY =  solidArea.y;
+        solidArea.width = 30;
+        solidArea.height = 30;
 
 
 //        screenX = tj.screenWidth/2 - (tj.tileSize/2);
@@ -27,21 +37,20 @@ public class Esqueleto extends Inimigo {
 
     }
 
-    public void getEsqueleto() {
-        try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_up2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_down1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_left1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Skeleton_right2.png"));
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void getEsqueleto() {
+
+            up1 = configImagem("/Esqueleto/Skeleton_up1");
+            up2 = configImagem("/Esqueleto/Skeleton_up2");
+            down1 = configImagem("/Esqueleto/Skeleton_down1");
+            down2 = configImagem("/Esqueleto/Skeleton_down2");
+            left1 =  configImagem("/Esqueleto/Skeleton_left1");
+            left2 = configImagem("/Esqueleto/Skeleton_left2");
+            right1 = configImagem("/Esqueleto/Skeleton_right1");
+            right2 = configImagem("/Esqueleto/Skeleton_right2");
     }
+
+
 
 
 //    public void draw(Graphics2D g2){

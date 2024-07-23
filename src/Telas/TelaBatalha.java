@@ -58,7 +58,7 @@ public class TelaBatalha extends JPanel {
         gridPanel.setBackground(Color.BLACK);
         add(gridPanel, BorderLayout.CENTER);*/
 
-       // JPanel buttonsGrid = new JPanel(new GridLayout(1, 2));
+        // JPanel buttonsGrid = new JPanel(new GridLayout(1, 2));
         JPanel buttonsGrid = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 38));
         buttonsGrid.setPreferredSize(new Dimension(0, 150));
 
