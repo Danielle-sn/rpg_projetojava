@@ -257,6 +257,8 @@ public class EscolhaPersonagemPanel extends JPanel {
                 messageLabel.setForeground(Color.WHITE);
                 messageLabel.setText("Guerreiro Selecionado");
                 messageLabel.setPreferredSize(new Dimension (300,100));
+                selectedCharacter = "Guerreiro";
+                gameFrame.getTela().setSelectedCharacter("Guerreiro");
             }
         });
         controlCardsButton.add(selectGuerreiroButton);
@@ -271,6 +273,9 @@ public class EscolhaPersonagemPanel extends JPanel {
                 messageLabel.setForeground(Color.WHITE);
                 messageLabel.setText("Feiticeira Selecionada");
                 messageLabel.setPreferredSize(new Dimension (300,100));
+                selectedCharacter = "Feiticeira";
+                gameFrame.getTela().setSelectedCharacter("Feiticeira");
+
             }
         });
         controlCardsButton.add(selectFeiticeiraButton);

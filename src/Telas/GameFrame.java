@@ -8,6 +8,8 @@ public class GameFrame extends JFrame{
     private JPanel cards;
     private Tela telaJogo;
 
+    private String selectedCharacter;
+
     public GameFrame(){
         //configura no tipo CardLayout
         cardLayout = new CardLayout();
@@ -56,5 +58,10 @@ public class GameFrame extends JFrame{
     }
     public void showPanel(String panelName) {
         cardLayout.show(cards, panelName);
+    }
+    
+
+    public Tela getTela() {
+        return telaJogo;
     }
 }

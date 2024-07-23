@@ -34,6 +34,14 @@ public class Tela extends JPanel implements Runnable{
 
 
 
+    private String selectedCharacter = "Guerreiro";
+
+    // Novo método para definir o personagem selecionado
+    public void setSelectedCharacter(String character) {
+        this.selectedCharacter = character;
+    }
+
+
     //FPS
         int fps = 60;
     //SISTEMA
@@ -174,7 +182,14 @@ public class Tela extends JPanel implements Runnable{
             }
             // jogador
             //guerreiro.draw(g2);
-            feiticeira.draw(g2);
+            //feiticeira.draw(g2);
+
+            if ("Guerreiro".equals(selectedCharacter)) {
+                guerreiro.draw(g2);
+            } else if ("Feiticeira".equals(selectedCharacter)) {
+                feiticeira.draw(g2);
+            }
+
             //interface
             iu.draw(g2);
 
