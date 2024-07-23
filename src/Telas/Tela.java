@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import Itens.SuperItens;
 import Tiles.TileManager;
 import entity.Entity;
 import entity.Guerreiro;
+import entity.Esqueleto;
 import main.ChecandoColisao;
 import main.AssetSetter;
 import main.KeyHandler;
@@ -49,6 +51,7 @@ public class Tela extends JPanel implements Runnable{
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
         public Entity[] npc = new Entity[10];
+        public Entity[] esqueleto = new Entity[20];
 
         //ESTADO DO JOGO
         public int gameState;
@@ -67,6 +70,7 @@ public class Tela extends JPanel implements Runnable{
         public void setupGame(){
             aSetter.setItem();
             aSetter.setNPCfazendeiro();
+            aSetter.setEsqueleto();
             gameState =  playState;
 
         }
@@ -122,6 +126,11 @@ public class Tela extends JPanel implements Runnable{
                         npc[i].update();
                     }
                 }
+                for(int i = 0; i < esqueleto.length; i++){
+                    if(esqueleto[i] != null){
+                        esqueleto[i].update();
+                    }
+                }
             }
             if(gameState == playState){
                 //
@@ -155,7 +164,12 @@ public class Tela extends JPanel implements Runnable{
                     npc[i].draw(g2);
                 }
                 }
-
+            // esqueleto
+            for(int i = 0; i<esqueleto.length;i++){
+                if (esqueleto[i] != null) {
+                    esqueleto[i].draw(g2);
+                }
+            }
             // jogador
             guerreiro.draw(g2);
 

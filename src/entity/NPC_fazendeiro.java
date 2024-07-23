@@ -31,29 +31,8 @@ public class NPC_fazendeiro extends Entity{
         right2 = configImagem("/NPC_fazendeiro/npcf_right2");
     }
 
-    public void setAction(){
-        actionLockCounter++;
-        //ajuste para o npc ele se mover dentro de dois 2s //ficar mais devegar
-        if(actionLockCounter==120){
-            Random random = new Random();
-            int i = random.nextInt(100)+1; // numero de 1 a 100
 
-            if(i <= 25){
-                direction = "up";
-            }
-            if(i > 25 && i <= 50){
-                direction = "down";
-            }
-            if(i > 50 && i <= 75){
-                direction = "left";
-            }
-            if(i > 75){
-                direction = "right";
-            }
-            actionLockCounter=0;
-        }
-
-
-    }
 
 }
+
+

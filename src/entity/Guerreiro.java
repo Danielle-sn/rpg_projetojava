@@ -87,6 +87,9 @@ public class Guerreiro extends Jogador {
             int npcIndex = tj.checandoColisao.checarEntity(this,tj.npc);
             interacaoNpc(npcIndex);
 
+            //checando colisão com o inimigo
+            int esqueletoIndex = tj.checandoColisao.checarEntity(this,tj.esqueleto);
+            contatoEsqueleto(esqueletoIndex);
 
             // se colisão é falsa, jogador pode se mover
             if(collisionOn == false){
@@ -155,6 +158,11 @@ public class Guerreiro extends Jogador {
         if(i != 999){
             System.out.println("tocando o npc");
 
+        }
+    }
+    public void contatoEsqueleto(int i){
+        if(i != 999){
+            //life -= 1;
         }
     }
 

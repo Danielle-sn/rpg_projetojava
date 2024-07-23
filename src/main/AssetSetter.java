@@ -1,6 +1,7 @@
 package main;
 
 import Telas.Tela;
+import entity.Esqueleto;
 import entity.NPC_fazendeiro;
 
 public class AssetSetter {
@@ -38,5 +39,15 @@ public class AssetSetter {
         tj.npc[0]= new NPC_fazendeiro(tj);
         tj.npc[0].worldX = tj.tileSize*21;
         tj.npc[0].worldY = tj.tileSize*21;
+    }
+    public void setEsqueleto(){
+        tj.esqueleto[0] = new Esqueleto("esqueleto",100,1,25,tj, null);
+        tj.esqueleto[0].worldX = tj.tileSize* 23;
+        tj.esqueleto[0].worldY = tj.tileSize*36;
+
+        tj.esqueleto[1] = new Esqueleto("esqueleto",100,1,25,tj, null);
+        tj.esqueleto[1].worldX = tj.tileSize* 23;
+        tj.esqueleto[1].worldY = tj.tileSize*37;
+
     }
 }
