@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+
 public class EscolhaPersonagemPanel extends JPanel {
+
     private GameFrame gameFrame;
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -18,16 +20,28 @@ public class EscolhaPersonagemPanel extends JPanel {
     private BufferedImage feiticeiraImage;
     private String selectedCharacter;
 
+    Color brown = new Color(82, 37, 0);
+    Color lightBrown = new Color(195, 142, 112);
+    Color lightOrange = new Color(218, 126, 55);
+    Color purple = new Color(83, 55, 69);
+    Color lightPink = new Color(219, 168, 172);
+    Color green1 = new Color(64, 145, 108);
+
+
 
     public EscolhaPersonagemPanel(GameFrame gameFrame) {
         this.gameFrame = gameFrame;
         setLayout(new BorderLayout()); //BorderLayout: north, south, east, west, center
 
 
+        Font titleFont = new Font(Font.SANS_SERIF, Font.BOLD, 25);
+
         JLabel titulo = new JLabel("Escolha de Personagem", SwingConstants.CENTER);
         add(titulo, BorderLayout.NORTH);
 
-        messageLabel = new JLabel("Mensagem: ", SwingConstants.CENTER);
+        messageLabel = new JLabel("", SwingConstants.CENTER);
+        messageLabel.setOpaque(true);
+        messageLabel.setFont(titleFont);
         add(messageLabel, BorderLayout.NORTH);
 
         cardLayout = new CardLayout();
@@ -36,8 +50,8 @@ public class EscolhaPersonagemPanel extends JPanel {
 
         try {
             System.out.println("Entrou no try");
-            guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Teste_guerreiro.png"));
-            feiticeiraImage = ImageIO.read(getClass().getResourceAsStream("/Feiticeira/Alchemist_down1.png"));
+            guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Big_guerreiro2.png"));
+            feiticeiraImage = ImageIO.read(getClass().getResourceAsStream("/Feiticeira/Big_alchemist.png"));
 
             if (guerreiroImage == null) {
                 System.out.println("Imagem do guerreiro não encontrada dentro da escolha! Verifique o caminho.");
@@ -64,8 +78,8 @@ public class EscolhaPersonagemPanel extends JPanel {
 
                 // Desenhar a imagem do guerreiro
                 if (guerreiroImage != null) {
-                    int guerreiroX = 10; // Ajuste a posição X
-                    int guerreiroY = 50; // Ajuste a posição Y
+                    int guerreiroX = 60;
+                    int guerreiroY = 160;
                     int imgWidth = guerreiroImage.getWidth();
                     int imgHeight = guerreiroImage.getHeight();
 
@@ -84,16 +98,48 @@ public class EscolhaPersonagemPanel extends JPanel {
                     System.out.println("Imagem do guerreiro é nula.");
                 }
 
+                Font  font = new Font(Font.SANS_SERIF,  Font.BOLD, 30);
+                g2d.setFont(font);
+
                 // Desenhar um retângulo
-                int rectX = getWidth() - 210; // Ajuste a posição X
+                int rectX = getWidth() - 370; // Ajuste a posição X
                 int rectY = 50; // Ajuste a posição Y
-                int rectWidth = 200;
-                int rectHeight = 300;
-                g2d.setColor(Color.BLUE);
+                int rectWidth = 350;
+                int rectHeight = 500;
+                g2d.setColor(brown);
                 g2d.fillRect(rectX, rectY, rectWidth, rectHeight);
+                g2d.setColor(Color.WHITE);
+                g2d.drawString("Guerreiro", 540 , 105);
+
+                // Configurar a fonte para o texto de descrição
+                Font descriptionFont = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+                g2d.setFont(descriptionFont);
+
+                // Desenhar o texto de descrição linha por linha
+                String[] descriptionLines = {
+                        "Guerreiros são mestres em",
+                        "combate corpo a corpo.",
+                        "",
+                        "Nome: Chris",
+                        "",
+                        "Agilidade: 2",
+                        "",
+                        "Força: 5",
+                        "",
+                        "Defesa: 3"
+                };
+
+                int lineHeight = g2d.getFontMetrics().getHeight();
+                int textY =  175; // Posição Y inicial para o texto de descrição
+
+                for (String line : descriptionLines) {
+                    g2d.drawString(line, 480, textY);
+                    textY += lineHeight;
+                }
             }
         };
-        cardGuerreiro.setBackground(Color.GREEN); // Defina a cor de fundo para o card do guerreiro
+
+        cardGuerreiro.setBackground(lightBrown); // Defina a cor de fundo para o card do guerreiro
         cardGuerreiro.setPreferredSize(new Dimension(800, 600)); // Ajuste o tamanho do card conforme necessário
 
 
@@ -106,8 +152,8 @@ public class EscolhaPersonagemPanel extends JPanel {
 
                 // Desenhar a imagem do guerreiro
                 if (feiticeiraImage != null) {
-                    int guerreiroX = 10; // Ajuste a posição X
-                    int guerreiroY = 50; // Ajuste a posição Y
+                    int guerreiroX = 60; // Ajuste a posição X
+                    int guerreiroY = 160; // Ajuste a posição Y
                     int imgWidth = feiticeiraImage.getWidth();
                     int imgHeight = feiticeiraImage.getHeight();
 
@@ -126,17 +172,50 @@ public class EscolhaPersonagemPanel extends JPanel {
                     System.out.println("Imagem do guerreiro é nula.");
                 }
 
+                Font  font = new Font(Font.SANS_SERIF,  Font.BOLD, 30);
+                g2d.setFont(font);
+
                 // Desenhar um retângulo
-                int rectX = getWidth() - 210; // Ajuste a posição X
+                int rectX = getWidth() - 390; // Ajuste a posição X
                 int rectY = 50; // Ajuste a posição Y
-                int rectWidth = 200;
-                int rectHeight = 300;
-                g2d.setColor(Color.BLUE);
+                int rectWidth = 350;
+                int rectHeight = 500;
+                g2d.setColor(purple);
                 g2d.fillRect(rectX, rectY, rectWidth, rectHeight);
+                g2d.setColor(Color.WHITE);
+                g2d.drawString("Feiticeira", 520 , 105);
+
+                // Configurar a fonte para o texto de descrição
+                Font descriptionFont = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+                g2d.setFont(descriptionFont);
+
+                // Desenhar o texto de descrição linha por linha
+                String[] descriptionLines = {
+                        "Feiticeiras são poderosas",
+                        "em magia e feitiçaria. Isso ",
+                        "lhe traz uma grande defesa",
+                        "",
+                        "Nome: Lyra",
+                        "",
+                        "Agilidade: 4",
+                        "",
+                        "Força: 3",
+                        "",
+                        "Defesa: 5"
+                };
+
+                int lineHeight = g2d.getFontMetrics().getHeight();
+                int textY =  175; // Posição Y inicial para o texto de descrição
+
+                for (String line : descriptionLines) {
+                    g2d.drawString(line, 470, textY);
+                    textY += lineHeight;
+                }
+
             }
         };
-        cardGuerreiro.setBackground(Color.GREEN); // Defina a cor de fundo para o card do guerreiro
-        cardGuerreiro.setPreferredSize(new Dimension(800, 600)); // Ajuste o tamanho do card conforme necessário
+        cardFeiticeira.setBackground(lightBrown); // Defina a cor de fundo para o card do guerreiro
+        cardFeiticeira.setPreferredSize(new Dimension(800, 600)); // Ajuste o tamanho do card conforme necessário
 
 
 
@@ -174,6 +253,8 @@ public class EscolhaPersonagemPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 selectedCharacter = "Guerreiro";
                 cardLayout.show(mainPanel, "Guerreiro");
+                messageLabel.setBackground(green1);
+                messageLabel.setForeground(Color.WHITE);
                 messageLabel.setText("Guerreiro Selecionado");
                 messageLabel.setPreferredSize(new Dimension (300,100));
             }
@@ -186,6 +267,8 @@ public class EscolhaPersonagemPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 selectedCharacter = "Feiticeira";
                 cardLayout.show(mainPanel, "Feiticeira");
+                messageLabel.setBackground(green1);
+                messageLabel.setForeground(Color.WHITE);
                 messageLabel.setText("Feiticeira Selecionada");
                 messageLabel.setPreferredSize(new Dimension (300,100));
             }
@@ -236,22 +319,22 @@ public class EscolhaPersonagemPanel extends JPanel {
 
             System.out.println("Entrou no paint");
 
-            // Desenhar a imagem do guerreiro
+            // imagem do guerreiro
             if (guerreiroImage != null) {
-                int guerreiroX = 10; // Ajuste a posição X
-                int guerreiroY = 50; // Ajuste a posição Y
+                int guerreiroX = 10;
+                int guerreiroY = 50;
                 g2d.drawImage(guerreiroImage, guerreiroX, guerreiroY, this);
             }
 
-            // Desenhar um retângulo do outro lado
-            int rectX = getWidth() - 210; // Ajuste a posição X
-            int rectY = 50; // Ajuste a posição Y
+            // retângulo do outro lado
+            int rectX = getWidth() - 210;
+            int rectY = 50;
             int rectWidth = 200;
             int rectHeight = 300;
             g2d.setColor(Color.BLUE);
             g2d.fillRect(rectX, rectY, rectWidth, rectHeight);
 
-            drawingPanel.setPreferredSize(new Dimension(300, 600)); // Ajuste o tamanho conforme necessário
+            drawingPanel.setPreferredSize(new Dimension(300, 600));
 
             add(drawingPanel, BorderLayout.WEST); // Adiciona o painel de desenho ao lado dos cards
             //add(controlCardsButton, BorderLayout.SOUTH);
