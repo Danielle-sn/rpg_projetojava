@@ -139,14 +139,14 @@ public class Guerreiro extends Entity{
 
            }
         }*/
-    }
+}
 
-    public void draw(Graphics2D g2){
-        //g2.setColor(Color.white);
-        //g2.fillRect(x, y, tj.tileSize, tj.tileSize);
-        BufferedImage image = null;
-        switch(direction){
-            case "up":
+public void draw(Graphics2D g2){
+    //g2.setColor(Color.white);
+    //g2.fillRect(x, y, tj.tileSize, tj.tileSize);
+    BufferedImage image = null;
+    switch(direction){
+        case "up":
             if (spriteNum == 1){
                 image = up1;
             }
@@ -154,34 +154,34 @@ public class Guerreiro extends Entity{
                 image = up2;
             }
             break;
-            case "down":
-                if (spriteNum == 1){
-                    image = down1;
-                }
-                if (spriteNum == 2){
-                    image = down2;
-                }
-                break;
-            case "left":
-                if (spriteNum == 1){
-                    image = left1;
-                }
-                if (spriteNum == 2){
-                    image = left2;
-                }
-                break;
-            case "right":
-                if (spriteNum == 1){
-                    image = right1;
-                }
-                if (spriteNum == 2){
-                    image = right2;
-                }
-                break;
-
-        }
-        g2.drawImage(image, screenX, screenY, tj.tileSize, tj.tileSize, null);
+        case "down":
+            if (spriteNum == 1){
+                image = down1;
+            }
+            if (spriteNum == 2){
+                image = down2;
+            }
+            break;
+        case "left":
+            if (spriteNum == 1){
+                image = left1;
+            }
+            if (spriteNum == 2){
+                image = left2;
+            }
+            break;
+        case "right":
+            if (spriteNum == 1){
+                image = right1;
+            }
+            if (spriteNum == 2){
+                image = right2;
+            }
+            break;
 
     }
+    g2.drawImage(image, screenX, screenY, tj.tileSize, tj.tileSize, null);
 
 }
+
+
