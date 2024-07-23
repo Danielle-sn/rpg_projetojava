@@ -134,7 +134,7 @@ public class TelaBatalha extends JPanel {
         // Carregar imagens
         try {
             System.out.println("Entrou no try");
-            guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Teste_guerreiro.png"));
+            guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Big_guerreiro.png"));
             esqueletoImage = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Big_Skeleton.png"));
             repaint();
             if (guerreiroImage == null) {
