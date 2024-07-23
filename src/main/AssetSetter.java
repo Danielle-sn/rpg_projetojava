@@ -47,7 +47,7 @@ public class AssetSetter {
 
         tj.esqueleto[1] = new Esqueleto("esqueleto",100,1,25, 5,50,2,3,2,3,tj, null);
         tj.esqueleto[1].worldX = tj.tileSize* 23;
-        tj.esqueleto[1].worldY = tj.tileSize*37;
+        tj.esqueleto[1].worldY = tj.tileSize*35;
 
     }
 }
