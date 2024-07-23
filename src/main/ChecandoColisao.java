@@ -74,51 +74,24 @@ public class ChecandoColisao {
                 switch (entity.direction) {
                     case "up":
                         entity.solidArea.y -= entity.speed;
-                        if (entity.solidArea.intersects(tj.itens[i].solidArea)) {//metodo do Rectangle intersects: checa se os dois retangulos estão colidindo
-                            //checar se o item é solid ou não
-                            //if (tj.itens[i].collision) {
-                                entity.collisionOn = true;
-                            //}
-                            if (jogador) { //garantir que só o jogador pode pegar os itens
-                                index = i;
-                            }
-                        }
                         break;
                     case "down":
                         entity.solidArea.y += entity.speed;
-                        if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
-                           // if (tj.itens[i].collision) {
-                                entity.collisionOn = true;
-                          //  }
-                            if (jogador) {
-                                index = i;
-                            }
-                        }
                         break;
                     case "left":
                         entity.solidArea.x -= entity.speed;
-                        if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
-                           // if (tj.itens[i].collision) {
-                                entity.collisionOn = true;
-                                System.out.println("colisão left");
-                            //}
-                            if (jogador) {
-                                index = i;
-                            }
-                        }
                         break;
                     case "right":
                         entity.solidArea.x += entity.speed;
-                        if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
-                           // if (tj.itens[i].collision) {
-                                entity.collisionOn = true;
-                           // }
-                            if (jogador) {
-                                index = i;
-                            }
-                        }
                         break;
                 }
+                if (entity.solidArea.intersects(tj.itens[i].solidArea)) {
+                    entity.collisionOn = true;
+                    if (jogador) {
+                        index = i;
+                    }
+                }
+
                 entity.solidArea.x = entity.solidAreaDefaultX;
                 entity.solidArea.y = entity.solidAreaDefaultY;
                 tj.itens[i].solidArea.x = tj.itens[i].solidAreaDefaultX;

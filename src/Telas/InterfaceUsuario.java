@@ -39,12 +39,16 @@ public class InterfaceUsuario {
         g2.setFont(arial40);
         g2.setColor(Color.white);
 
+        //Estado do Jogador
         if (tj.gameState == tj.playState) {
             //later
         }
+        //Estado pausa
         if (tj.gameState == tj.pauseState) {
             drawPauseScreen();
         }
+        //Estado diálogo
+        //if(tj.gameState == tj.)
     }
 
     //        if (finalJogo){
@@ -106,6 +110,8 @@ public class InterfaceUsuario {
         int y = tj.screenHeight / 2;
         g2.drawString(text, x, y);
     }
+
+
 
     public int getXCentroTexto(String text) {
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
