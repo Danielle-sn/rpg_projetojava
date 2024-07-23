@@ -9,9 +9,7 @@ import javax.swing.JPanel;
 
 import Itens.SuperItens;
 import Tiles.TileManager;
-import entity.Entity;
-import entity.Guerreiro;
-import entity.Esqueleto;
+import entity.*;
 import main.ChecandoColisao;
 import main.AssetSetter;
 import main.KeyHandler;
