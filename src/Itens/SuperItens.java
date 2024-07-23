@@ -22,7 +22,7 @@ public class SuperItens {
 
 
     public void draw(Graphics2D g2, Tela tj){
-        int screenX = worldX - entity.worldX + entity.screenX; // tirar a diferença entre as coordenadas da tela e do mapa
+        int screenX = worldX - entity.worldX + tj.guerreiro.screenX; // tirar a diferença entre as coordenadas da tela e do mapa
         int screenY = worldY - tj.guerreiro.worldY + tj.guerreiro.screenY;
 
         if(worldX + tj.tileSize > tj.guerreiro.worldX - tj.guerreiro.screenX &&

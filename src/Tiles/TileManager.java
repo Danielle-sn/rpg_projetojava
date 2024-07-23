@@ -119,10 +119,10 @@ public class TileManager {
             int screenX = worldX - tj.guerreiro.worldX + tj.guerreiro.screenX; // tirar a diferença entre as coordenadas da tela e do mapa
             int screenY = worldY - tj.guerreiro.worldY + tj.guerreiro.screenY;
 
-            if (worldX + tj.tileSize > tj.guerreiro.worldX - tj.guerreiro.screenX &&
-                    worldX - tj.tileSize < tj.guerreiro.worldX + tj.guerreiro.screenX &&
-                    worldY + tj.tileSize > tj.guerreiro.worldY - tj.guerreiro.screenY &&
-                    worldY - tj.tileSize < tj.guerreiro.worldY + tj.guerreiro.screenY) {
+            if (worldX + tj.tileSize > (tj.guerreiro.worldX -48) - tj.guerreiro.screenX &&
+                    worldX - tj.tileSize < (tj.guerreiro.worldX + 48) + tj.guerreiro.screenX &&
+                    worldY + tj.tileSize > (tj.guerreiro.worldY-48) - tj.guerreiro.screenY &&
+                    worldY - tj.tileSize < (tj.guerreiro.worldY +90)+ tj.guerreiro.screenY) {
                 g2.drawImage(tile[tileNum].image, screenX, screenY,null);
                 //System.out.println("coluna:"+worldCol+"li"+worldRow+"ima"+tileNum);
 
