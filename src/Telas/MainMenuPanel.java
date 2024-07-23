@@ -12,7 +12,7 @@ public class MainMenuPanel extends JPanel {
         setLayout(new BorderLayout()); //BorderLayout: north, south, east, west, center
 
 
-        JLabel titulo = new JLabel("Tela Principal", SwingConstants.CENTER);
+        JLabel titulo = new JLabel("Menu", SwingConstants.CENTER);
         add(titulo, BorderLayout.NORTH);
 
         //Mais um painel para organizar os botoes em GridLayout
@@ -27,6 +27,10 @@ public class MainMenuPanel extends JPanel {
         JButton battleButton = new JButton("Iniciar Batalha");
         battleButton.addActionListener(e -> gameFrame.showPanel("Batalha"));
         buttonsPanel.add(battleButton);
+
+        JButton chooseButton = new JButton("Escolha seu Personagem");
+        chooseButton.addActionListener(e -> gameFrame.showPanel("Escolha"));
+        buttonsPanel.add(chooseButton);
 
 
         add(buttonsPanel, BorderLayout.CENTER);
