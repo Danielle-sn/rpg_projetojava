@@ -13,8 +13,8 @@ public class Esqueleto extends Inimigo {
 //    public final int screenX;
 //    public final int screenY;
 
-    public Esqueleto(String nome, int forca, int agilidade, int dexterity, int ataque, int nivel, int saude, int exp, int nextLevelExp, int currentWeapon, Tela tj, KeyHandler keyH) {
-        super(nome, forca, agilidade, dexterity, ataque, nivel, saude, exp, nextLevelExp, currentWeapon, tj, keyH);
+    public Esqueleto(String nome, int forca, int dexterity, int ataque, int saude, int exp, Tela tj, KeyHandler keyH) {
+        super(nome, forca, dexterity, ataque, saude, exp, tj, keyH);
 
 
         direction = "down";

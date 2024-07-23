@@ -11,8 +11,8 @@ public class Feiticeira extends Jogador {
     public final int screenX;
     public final int screenY;
 
-    public Feiticeira(String nome, int forca, int agilidade, int dexterity, int ataque, int nivel, int saude, int exp, int nextLevelExp, int currentWeapon, Tela tj, KeyHandler keyH) {
-        super(nome, forca, agilidade, dexterity, ataque, saude, exp, nivel, nextLevelExp, currentWeapon, tj, keyH);
+    public Feiticeira(String nome, int forca, int dexterity, int ataque, int saude, int exp, Tela tj, KeyHandler keyH) {
+        super(nome, forca, dexterity, ataque, saude, exp, tj, keyH);
 
         screenX = tj.screenWidth / 2 - (tj.tileSize / 2);
         screenY = tj.screenHeight / 2 - (tj.tileSize / 2);

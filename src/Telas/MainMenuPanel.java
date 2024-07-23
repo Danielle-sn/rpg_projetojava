@@ -16,7 +16,7 @@ public class MainMenuPanel extends JPanel {
         add(titulo, BorderLayout.NORTH);
 
         //Mais um painel para organizar os botoes em GridLayout
-        JPanel buttonsPanel = new JPanel(new GridLayout(3,1));
+        JPanel buttonsPanel = new JPanel(new GridLayout(2,1));
 
 
 
@@ -24,9 +24,9 @@ public class MainMenuPanel extends JPanel {
         startButton.addActionListener(e -> gameFrame.showPanel("Jogo"));
         buttonsPanel.add(startButton);
 
-        JButton battleButton = new JButton("Iniciar Batalha");
+        /*JButton battleButton = new JButton("Iniciar Batalha");
         battleButton.addActionListener(e -> gameFrame.showPanel("Batalha"));
-        buttonsPanel.add(battleButton);
+        buttonsPanel.add(battleButton);*/
 
         JButton chooseButton = new JButton("Escolha seu Personagem");
         chooseButton.addActionListener(e -> gameFrame.showPanel("Escolha"));

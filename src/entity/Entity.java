@@ -52,18 +52,14 @@ public class Entity {
         System.out.println("Next level exp: " + nivel);
         System.out.println("arma atual: " + currentWeapon);
     }
-    public Entity(String nome, int forca, int agilidade, int dexterity, int ataque, int nivel, int saude, int exp, int nextLevelExp, int currentWeapon, Tela tj, KeyHandler keyH) {
+    public Entity(String nome, int forca, int dexterity, int ataque, int saude, int exp, Tela tj, KeyHandler keyH) {
 
         this.nome = nome;
         this.forca = forca;
-        this.agilidade = agilidade;
         this.dexterity = dexterity;
         this.ataque = ataque;
-        this.nivel = nivel;
         this.saude = saude;
         this.exp = exp;
-        this.nextLevelExp = nextLevelExp;
-        this.currentWeapon = currentWeapon;
         this.tj = tj;
         this.keyH = keyH;
     }
@@ -81,12 +77,7 @@ public class Entity {
     public void setForca(int forca) {
         this.forca = forca;
     }
-    public int getAgilidade() {
-        return agilidade;
-    }
-    public void setAgilidade(int agilidade) {
-        this.agilidade = agilidade;
-    }
+
     public int getDexterity() {
         return dexterity;
     }
@@ -94,7 +85,7 @@ public class Entity {
         this.dexterity = dexterity;
     }
     public int getAtaque() {
-        return ataque = forca * currentWeapon;
+        return ataque = forca * ataque;
     }
     public void setAtaque(int ataque) {
         this.ataque = ataque;
@@ -117,18 +108,6 @@ public class Entity {
     public void setExp(int exp) {
         this.exp = exp;
     }
-    public int getNextLevelExp() {
-        return nextLevelExp;
-    }
-    public void setNextLevelExp(int nextLevelExp) {
-        this.nextLevelExp = nextLevelExp;
-    }
-    public int getCurrentWeapon() {
-        return currentWeapon;
-    }
-    public void setCurrentWeapon(int currentWeapon) {
-        this.currentWeapon = currentWeapon;
-    }
 
     public void receberDano(int dano) {
         this.saude -= dano;
@@ -139,16 +118,16 @@ public class Entity {
 
     public int nivelDeAtaque(){
         if(nivel == 1){
-            ataque = 10;
+            ataque = ataque *1;
         }
         else if (nivel == 2) {
-            ataque = 20;
+            ataque = ataque * 3;
         }
         else if (nivel == 3) {
-            ataque = 30;
+            ataque = ataque * 5;
         }
         else{
-            ataque = 0;
+            ataque = ataque * 1;
         }
         return ataque;
     }

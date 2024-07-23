@@ -46,14 +46,6 @@ public class KeyHandler  implements KeyListener{
                     tj.gameState = tj.playState;
                 }
             }
-                //DEBUG
-//            if (code == KeyEvent.VK_T) {
-//                if (checkDrawTime == false) {
-//                    checkDrawTime = true;
-//                } else if (checkDrawTime == true) {
-//                    checkDrawTime = false;
-//                }
-//            }
 
         }
 

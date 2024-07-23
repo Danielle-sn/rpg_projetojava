@@ -14,6 +14,8 @@ import javax.swing.border.Border;
 import entity.Jogador;
 import entity.Inimigo;
 import entity.Feiticeira;
+import entity.Entity;
+import Telas.Tela;
 
 public class TelaBatalha extends JPanel {
     private GameFrame gameFrame;
@@ -26,6 +28,8 @@ public class TelaBatalha extends JPanel {
     private Jogador guerreiro;
     private Jogador feiticeira;
     private Inimigo esqueleto;
+
+
 
     public TelaBatalha(GameFrame gameFrame, Jogador guerreiro, Jogador feiticeira, Inimigo esqueleto) {
         this.gameFrame = gameFrame;
@@ -131,24 +135,24 @@ public class TelaBatalha extends JPanel {
                 add(valoresPanel, BorderLayout.EAST);
 
                 atacarButton.addActionListener(new ActionListener() {
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        // Atualiza os valores de vida (exemplo)
                         guerreiro.receberDano(esqueleto.getAtaque());
                         esqueleto.receberDano(guerreiro.getAtaque());
-                        guerreiroVidaLabel.setText("Vida do Guerreiro: " + (int) (guerreiro.getAtaque() * 100));
-                        esqueletoVidaLabel.setText("Vida do Esqueleto: " + (int) (Math.random() * 100));
+                        guerreiroVidaLabel.setText("Vida do Guerreiro: " + (int) (100 - esqueleto.getAtaque()));
+                        esqueletoVidaLabel.setText("Vida do Esqueleto: " + (int) (100 - guerreiro.getAtaque()));
                     }
                 });
 
 
-                // Carregar imagens
+                // Carrega imagens
                 try {
                     System.out.println("Entrou no try");
                     guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Big_guerreiro.png"));
                     esqueletoImage = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Big_Skeleton.png"));
                     repaint();
-                    if (guerreiroImage == null) {
+                   /* if (guerreiroImage == null) {
                         System.out.println("Imagem do guerreiro não encontrada! Verifique o caminho.");
                     } else {
                         System.out.println("Imagem do guerreiro carregada com sucesso.");
@@ -158,7 +162,7 @@ public class TelaBatalha extends JPanel {
                         System.out.println("Imagem do esqueleto não encontrada! Verifique o caminho.");
                     } else {
                         System.out.println("Imagem do esqueleto carregada com sucesso.");
-                    }
+                    }*/
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -171,17 +175,11 @@ public class TelaBatalha extends JPanel {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
 
-                System.out.println("Entrou no paint");
+                //System.out.println("Entrou no paint");
 
-        /*g2d.setColor(Color.RED); // Define a cor do retângulo
-        g2d.fillRect(50, 50, 100, 50); // Desenha um retângulo preenchido (x, y, largura, altura)
+                // Desenha o guerreiro na posição desejada
 
-        // Desenho de um círculo
-        g2d.setColor(Color.BLUE); // Define a cor do círculo
-        g2d.fillOval(200, 50, 100, 100);*/
-                // Desenhar o guerreiro na posição desejada
-
-                // Desenhar o grid
+                // Desenha o grid
                 int width = getWidth();
                 int height = getHeight();
 
@@ -201,7 +199,7 @@ public class TelaBatalha extends JPanel {
 
                 //espessura da borda
                 g2d.setStroke(new BasicStroke(4));
-                // Desenhar retângulo e texto para Guerreiro
+                // Desenha retângulo e texto para Guerreiro
                 g2d.setColor(Color.BLACK);
                 g2d.fillRect(150, 70, 150, 60); // Desenha o retângulo (x, y, largura, altura)
                 g2d.setColor(Color.WHITE);
@@ -209,7 +207,7 @@ public class TelaBatalha extends JPanel {
                 g2d.setColor(Color.WHITE);
                 g2d.drawString("Guerreiro", 180, 105); // Desenha o texto (texto, x, y)
 
-                // Desenhar retângulo e texto para Esqueleto
+                // Desenha retângulo e texto para Esqueleto
                 g2d.setColor(Color.BLACK);
                 g2d.fillRect(450, 70, 150, 60); // Desenha o retângulo (x, y, largura, altura)
                 g2d.setColor(Color.WHITE);
@@ -227,16 +225,17 @@ public class TelaBatalha extends JPanel {
                 g2d.drawString("VS", 363, 105); // Desenha o texto (texto, x, y)
 
                 if (guerreiroImage != null) {
-                    int guerreiroX = 100; // ajuste a posição X
-                    int guerreiroY = 100; // ajuste a posição Y
+                    int guerreiroX = 100;
+                    int guerreiroY = 100;
                     g2d.drawImage(guerreiroImage, guerreiroX, guerreiroY, null);
                 }
 
-                // Desenhar o esqueleto na posição desejada
+                // Desenha o esqueleto na posição desejada
                 if (esqueletoImage != null) {
-                    int esqueletoX = 400; // ajuste a posição X
-                    int esqueletoY = 100; // ajuste a posição Y
+                    int esqueletoX = 400;
+                    int esqueletoY = 100;
                     g2d.drawImage(esqueletoImage, esqueletoX, esqueletoY, null);
                 }
             }
+
         }

@@ -22,9 +22,9 @@ public class GameFrame extends JFrame{
 
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
-        Guerreiro guerreiro = new Guerreiro("Guerreiro", 10, 5, 3, 15, 1, 100, 0, 100, 1, telaJogo, keyH);
-        Feiticeira feiticeira = new Feiticeira("Feiticeira", 10, 5, 3, 15, 1, 100, 0, 100, 1, telaJogo, keyH);
-        Esqueleto esqueleto = new Esqueleto("Esqueleto", 10, 5, 3, 15, 1, 100, 0, 100, 1, telaJogo, keyH);
+        Guerreiro guerreiro = new Guerreiro("Guerreiro", 10, 5, 3, 15, 5, telaJogo, keyH);
+        Feiticeira feiticeira = new Feiticeira("Feiticeira", 10, 100, 0, 100, 1, telaJogo, keyH);
+        Esqueleto esqueleto = new Esqueleto("Esqueleto", 10, 5, 3, 100, 1, telaJogo, keyH);
 
 
 
