@@ -48,7 +48,9 @@ public class InterfaceUsuario {
             drawPauseScreen();
         }
         //Estado diálogo
-        //if(tj.gameState == tj.)
+         if(tj.gameState == tj.dialogueState){
+             //drawDialogueScreen();
+         }
     }
 
     //        if (finalJogo){

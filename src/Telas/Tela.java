@@ -56,6 +56,7 @@ public class Tela extends JPanel implements Runnable{
         public int gameState;
         public final int playState = 1;
         public final int pauseState = 2;
+        public final int dialogueState = 3;
 
 
         public Tela() {
