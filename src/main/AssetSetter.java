@@ -37,8 +37,8 @@ public class AssetSetter {
     }
     public void setNPCfazendeiro(){
         tj.npc[0]= new NPC_fazendeiro(tj);
-        tj.npc[0].worldX = tj.tileSize*21;
-        tj.npc[0].worldY = tj.tileSize*21;
+        tj.npc[0].worldX = tj.tileSize*10;
+        tj.npc[0].worldY = tj.tileSize*23;
     }
     public void setEsqueleto(){
         tj.esqueleto[0] = new Esqueleto("esqueleto",100,1,25, 5,50,2,3,2,3,tj, null);

@@ -24,9 +24,9 @@ public class MainMenuPanel extends JPanel {
         startButton.addActionListener(e -> gameFrame.showPanel("Jogo"));
         buttonsPanel.add(startButton);
 
-//        JButton battleButton = new JButton("Iniciar Batalha");
-//        battleButton.addActionListener(e -> gameFrame.showPanel("Batalha"));
-//        buttonsPanel.add(battleButton);
+        JButton battleButton = new JButton("Iniciar Batalha");
+        battleButton.addActionListener(e -> gameFrame.showPanel("Batalha"));
+        buttonsPanel.add(battleButton);
 
         JButton chooseButton = new JButton("Escolha seu Personagem");
         chooseButton.addActionListener(e -> gameFrame.showPanel("Escolha"));
