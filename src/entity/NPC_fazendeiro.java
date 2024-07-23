@@ -16,7 +16,7 @@ public class NPC_fazendeiro extends Entity{
 
         direction = "down";
         speed = 1; //velocidade
-
+        setDialogue();
         getNPCfazendeiro();
     }
     public void getNPCfazendeiro(){
@@ -31,6 +31,16 @@ public class NPC_fazendeiro extends Entity{
         right2 = configImagem("/NPC_fazendeiro/npcf_right2");
     }
 
+    public void setDialogue(){
+        dialogues[0] = "Olá,Lidy! O reino de Eldoria viveu um período de paz, " +
+                "mas estranhos eventos começam a ocorrer. Relíquias desaparecem, " +
+                "criaturas sombrias surgem nas florestas e uma sensação de mal iminente paira no ar.";
+
+    }
+
+    public void speak(){
+        tj.iu.currentDialogue = dialogues[0];
+    }
 
 
 }
