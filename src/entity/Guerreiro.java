@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Guerreiro extends Entity{
 
-    private Movimento mov;
+    public Movimento mov;
 
     public final int screenX;
     public final int screenY;
