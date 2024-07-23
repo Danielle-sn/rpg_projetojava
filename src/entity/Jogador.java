@@ -121,7 +121,8 @@ public class Jogador extends Entity {
     }
     public void interacaoNpc(int i){
         if(i != 999){
-            System.out.println("tocando o npc");
+            tj.gameState = tj.dialogueState;
+            tj.npc[i].speak();
 
         }
     }

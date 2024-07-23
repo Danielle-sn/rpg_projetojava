@@ -25,6 +25,7 @@ public class Entity {
     public int solidAreaDefaultY;
     public boolean collisionOn = false;
     public int actionLockCounter = 0;
+    String[] dialogues = new String[20];
 
     // ATRIBUTOS DE ENTITY
     private String nome;
@@ -149,6 +150,8 @@ public class Entity {
     public Entity(Tela tj) {
         this.tj = tj;
     }
+
+    public void speak(){ }
 
     //public void setAction(){ }
 
