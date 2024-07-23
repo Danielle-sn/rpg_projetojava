@@ -56,4 +56,8 @@ public class Guerreiro extends Jogador {
         right2 = configImagem("/Guerreiro/guerreiro_right2");
     }
 
+    @Override
+    public int getAtaque() {
+        return super.getAtaque();
+    }
 }

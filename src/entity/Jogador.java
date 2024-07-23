@@ -21,6 +21,15 @@ public class Jogador extends Entity {
         worldY = tj.tileSize * 21;
         speed = 4;
         direction = "down";
+
+        nivel = 1;
+        forca = 1;
+        agilidade = 1;
+        dexterity = 1;
+        exp = 0;
+        ataque = getAtaque();
+        saude = 5;
+
     }
     public void update(){
 
@@ -126,9 +135,14 @@ public class Jogador extends Entity {
 
         }
     }
+
     public void contatoEsqueleto(int i){
         if(i != 999){
-            //life -= 1;
+                    if (tj.gameFrame == null) {
+                        System.out.println("gameFrame está nulo!");
+                    } else {
+                        tj.gameFrame.showPanel("Batalha");
+                    }
         }
     }
 

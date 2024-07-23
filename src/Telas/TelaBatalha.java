@@ -11,6 +11,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.border.Border;
 
+import entity.Jogador;
+import entity.Inimigo;
+import entity.Feiticeira;
+
 public class TelaBatalha extends JPanel {
     private GameFrame gameFrame;
     private BufferedImage guerreiroImage;
@@ -19,9 +23,15 @@ public class TelaBatalha extends JPanel {
 
     private JLabel guerreiroVidaLabel;
     private JLabel esqueletoVidaLabel;
+    private Jogador guerreiro;
+    private Jogador feiticeira;
+    private Inimigo esqueleto;
 
-    public TelaBatalha(GameFrame gameFrame) {
+    public TelaBatalha(GameFrame gameFrame, Jogador guerreiro, Jogador feiticeira, Inimigo esqueleto) {
         this.gameFrame = gameFrame;
+        this.guerreiro = guerreiro;
+        this.feiticeira = feiticeira;
+        this.esqueleto = esqueleto;
         setLayout(new BorderLayout()); // BorderLayout: north, south, east, west, center
 
         JLabel titulo = new JLabel("Tela Batalha", SwingConstants.CENTER);
@@ -109,58 +119,59 @@ public class TelaBatalha extends JPanel {
 
         add(buttonsGrid, BorderLayout.SOUTH);
 
-        guerreiroVidaLabel = new JLabel("Hp Guerreiro: 100");
-        esqueletoVidaLabel = new JLabel("Hp esqueleto: 100");
 
-        JPanel valoresPanel = new JPanel();
-        valoresPanel.setLayout(new GridLayout(2,1));
-        valoresPanel.add(guerreiroVidaLabel);
-        valoresPanel.add(esqueletoVidaLabel);
-        add(valoresPanel, BorderLayout.EAST);
 
-        atacarButton.addActionListener(new ActionListener() {
+                guerreiroVidaLabel = new JLabel("Hp Guerreiro: 100");
+                esqueletoVidaLabel = new JLabel("Hp esqueleto: 100");
+
+                JPanel valoresPanel = new JPanel();
+                valoresPanel.setLayout(new GridLayout(2, 1));
+                valoresPanel.add(guerreiroVidaLabel);
+                valoresPanel.add(esqueletoVidaLabel);
+                add(valoresPanel, BorderLayout.EAST);
+
+                atacarButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Atualiza os valores de vida (exemplo)
+                        guerreiro.receberDano(esqueleto.getAtaque());
+                        esqueleto.receberDano(guerreiro.getAtaque());
+                        guerreiroVidaLabel.setText("Vida do Guerreiro: " + (int) (guerreiro.getAtaque() * 100));
+                        esqueletoVidaLabel.setText("Vida do Esqueleto: " + (int) (Math.random() * 100));
+                    }
+                });
+
+
+                // Carregar imagens
+                try {
+                    System.out.println("Entrou no try");
+                    guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Big_guerreiro.png"));
+                    esqueletoImage = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Big_Skeleton.png"));
+                    repaint();
+                    if (guerreiroImage == null) {
+                        System.out.println("Imagem do guerreiro não encontrada! Verifique o caminho.");
+                    } else {
+                        System.out.println("Imagem do guerreiro carregada com sucesso.");
+                    }
+
+                    if (esqueletoImage == null) {
+                        System.out.println("Imagem do esqueleto não encontrada! Verifique o caminho.");
+                    } else {
+                        System.out.println("Imagem do esqueleto carregada com sucesso.");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // Atualiza os valores de vida (exemplo)
-                guerreiroVidaLabel.setText("Vida do Guerreiro: " + (int) (Math.random() * 100));
-                esqueletoVidaLabel.setText("Vida do Esqueleto: " + (int) (Math.random() * 100));
-            }
-        });
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
 
-
-
-
-
-        // Carregar imagens
-        try {
-            System.out.println("Entrou no try");
-            guerreiroImage = ImageIO.read(getClass().getResourceAsStream("/Guerreiro/Teste_guerreiro.png"));
-            esqueletoImage = ImageIO.read(getClass().getResourceAsStream("/Esqueleto/Big_Skeleton.png"));
-            repaint();
-            if (guerreiroImage == null) {
-                System.out.println("Imagem do guerreiro não encontrada! Verifique o caminho.");
-            } else {
-                System.out.println("Imagem do guerreiro carregada com sucesso.");
-            }
-
-            if (esqueletoImage == null) {
-                System.out.println("Imagem do esqueleto não encontrada! Verifique o caminho.");
-            } else {
-                System.out.println("Imagem do esqueleto carregada com sucesso.");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-
-        System.out.println("Entrou no paint");
+                System.out.println("Entrou no paint");
 
         /*g2d.setColor(Color.RED); // Define a cor do retângulo
         g2d.fillRect(50, 50, 100, 50); // Desenha um retângulo preenchido (x, y, largura, altura)
@@ -168,64 +179,64 @@ public class TelaBatalha extends JPanel {
         // Desenho de um círculo
         g2d.setColor(Color.BLUE); // Define a cor do círculo
         g2d.fillOval(200, 50, 100, 100);*/
-        // Desenhar o guerreiro na posição desejada
+                // Desenhar o guerreiro na posição desejada
 
-        // Desenhar o grid
-        int width = getWidth();
-        int height = getHeight();
+                // Desenhar o grid
+                int width = getWidth();
+                int height = getHeight();
 
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
 
-        g2d.setColor(Color.WHITE); // Cor das linhas do grid
-        for (int x = 0; x < width; x += gridSize) {
-            g2d.drawLine(x, 0, x, height);
+                g2d.setColor(Color.WHITE); // Cor das linhas do grid
+                for (int x = 0; x < width; x += gridSize) {
+                    g2d.drawLine(x, 0, x, height);
+                }
+                for (int y = 0; y < height; y += gridSize) {
+                    g2d.drawLine(0, y, width, y);
+                }
+
+                Font font = new Font(Font.SANS_SERIF, Font.BOLD, 20);
+                g2d.setFont(font);
+
+                //espessura da borda
+                g2d.setStroke(new BasicStroke(4));
+                // Desenhar retângulo e texto para Guerreiro
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(150, 70, 150, 60); // Desenha o retângulo (x, y, largura, altura)
+                g2d.setColor(Color.WHITE);
+                g2d.drawRect(150, 70, 150, 60);
+                g2d.setColor(Color.WHITE);
+                g2d.drawString("Guerreiro", 180, 105); // Desenha o texto (texto, x, y)
+
+                // Desenhar retângulo e texto para Esqueleto
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(450, 70, 150, 60); // Desenha o retângulo (x, y, largura, altura)
+                g2d.setColor(Color.WHITE);
+                g2d.drawRect(450, 70, 150, 60);
+                g2d.setColor(Color.WHITE);
+                g2d.drawString("Esqueleto", 480, 105); // Desenha o texto (texto, x, y)
+
+                //Retangulo do X
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(350, 70, 51, 60); // Desenha o retângulo (x, y, largura, altura)
+                g2d.setColor(Color.WHITE);
+                g2d.setStroke(new BasicStroke(2));
+                g2d.drawRect(350, 70, 51, 60);
+                g2d.setColor(Color.WHITE);
+                g2d.drawString("VS", 363, 105); // Desenha o texto (texto, x, y)
+
+                if (guerreiroImage != null) {
+                    int guerreiroX = 100; // ajuste a posição X
+                    int guerreiroY = 100; // ajuste a posição Y
+                    g2d.drawImage(guerreiroImage, guerreiroX, guerreiroY, null);
+                }
+
+                // Desenhar o esqueleto na posição desejada
+                if (esqueletoImage != null) {
+                    int esqueletoX = 400; // ajuste a posição X
+                    int esqueletoY = 100; // ajuste a posição Y
+                    g2d.drawImage(esqueletoImage, esqueletoX, esqueletoY, null);
+                }
+            }
         }
-        for (int y = 0; y < height; y += gridSize) {
-            g2d.drawLine(0, y, width, y);
-        }
-
-        Font  font = new Font(Font.SANS_SERIF,  Font.BOLD, 20);
-        g2d.setFont(font);
-
-        //espessura da borda
-        g2d.setStroke(new BasicStroke(4));
-        // Desenhar retângulo e texto para Guerreiro
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(150, 70, 150, 60); // Desenha o retângulo (x, y, largura, altura)
-        g2d.setColor(Color.WHITE);
-        g2d.drawRect(150, 70, 150, 60);
-        g2d.setColor(Color.WHITE);
-        g2d.drawString("Guerreiro", 180, 105); // Desenha o texto (texto, x, y)
-
-        // Desenhar retângulo e texto para Esqueleto
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(450, 70, 150, 60); // Desenha o retângulo (x, y, largura, altura)
-        g2d.setColor(Color.WHITE);
-        g2d.drawRect(450, 70, 150, 60);
-        g2d.setColor(Color.WHITE);
-        g2d.drawString("Esqueleto", 480, 105); // Desenha o texto (texto, x, y)
-
-        //Retangulo do X
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(350, 70, 51, 60); // Desenha o retângulo (x, y, largura, altura)
-        g2d.setColor(Color.WHITE);
-        g2d.setStroke(new BasicStroke(2));
-        g2d.drawRect(350, 70, 51, 60);
-        g2d.setColor(Color.WHITE);
-        g2d.drawString("VS", 363, 105); // Desenha o texto (texto, x, y)
-
-        if (guerreiroImage != null) {
-            int guerreiroX = 100; // ajuste a posição X
-            int guerreiroY = 100; // ajuste a posição Y
-            g2d.drawImage(guerreiroImage, guerreiroX, guerreiroY, null);
-        }
-
-        // Desenhar o esqueleto na posição desejada
-        if (esqueletoImage != null) {
-            int esqueletoX = 400; // ajuste a posição X
-            int esqueletoY = 100; // ajuste a posição Y
-            g2d.drawImage(esqueletoImage, esqueletoX, esqueletoY, null);
-        }
-    }
-}

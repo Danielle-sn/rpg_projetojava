@@ -28,16 +28,16 @@ public class Entity {
     String[] dialogues = new String[20];
 
     // ATRIBUTOS DE ENTITY
-    private String nome;
-    private int forca;
-    private int agilidade;
-    private int dexterity;
-    private int ataque;
-    private int nivel;
-    private int saude;
-    private int exp;
-    private int nextLevelExp;
-    private int currentWeapon;
+    protected String nome;
+    protected int forca;
+    protected int agilidade;
+    protected int dexterity;
+    protected int ataque;
+    protected int nivel;
+    protected int saude;
+    protected int exp;
+    protected int nextLevelExp;
+    protected int currentWeapon;
     KeyHandler keyH;
 
     public void exibirAtributos(){
@@ -94,7 +94,7 @@ public class Entity {
         this.dexterity = dexterity;
     }
     public int getAtaque() {
-        return ataque;
+        return ataque = forca * currentWeapon;
     }
     public void setAtaque(int ataque) {
         this.ataque = ataque;
@@ -128,6 +128,13 @@ public class Entity {
     }
     public void setCurrentWeapon(int currentWeapon) {
         this.currentWeapon = currentWeapon;
+    }
+
+    public void receberDano(int dano) {
+        this.saude -= dano;
+        if (this.saude < 0) {
+            this.saude = 0;
+        }
     }
 
     public int nivelDeAtaque(){

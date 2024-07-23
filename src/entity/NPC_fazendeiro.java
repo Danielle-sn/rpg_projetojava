@@ -32,7 +32,7 @@ public class NPC_fazendeiro extends Entity{
     }
 
     public void setDialogue(){
-        dialogues[0] = "Olá,Lidy! O reino de Eldoria viveu um período de paz, " +
+        dialogues[0] = "Olá,Guardiã(o)! O reino de Eldoria viveu um período de paz, "+
                 "mas estranhos eventos começam a ocorrer. Relíquias desaparecem, " +
                 "criaturas sombrias surgem nas florestas e uma sensação de mal iminente paira no ar.";
 

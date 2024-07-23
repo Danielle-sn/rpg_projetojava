@@ -32,6 +32,7 @@ public class Tela extends JPanel implements Runnable{
         public final int worldWitch = tileSize * maxWorldCol;
         public final int worldHeight = tileSize * maxWorldRow;
 
+    public GameFrame gameFrame;
 
 
     private String selectedCharacter = "Guerreiro";
@@ -67,13 +68,15 @@ public class Tela extends JPanel implements Runnable{
         public final int dialogueState = 3;
 
 
-        public Tela() {
+        public Tela(GameFrame gameFrame) {
+            this.gameFrame = gameFrame;
             this.setPreferredSize(new Dimension(screenWidth, screenHeight));
             this.setBackground(Color.black);
             this.setDoubleBuffered(true);
             this.addKeyListener(keyH);
             this.setFocusable(true);
             this.requestFocusInWindow();
+            System.out.println("GameFrame foi inicializado: " + (gameFrame != null));
         }
         public void setupGame(){
             aSetter.setItem();

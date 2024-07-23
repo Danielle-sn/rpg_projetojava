@@ -1,5 +1,6 @@
 package Itens;
 
+import Telas.GameFrame;
 import Telas.Tela;
 import main.Utils;
 import entity.Entity;
@@ -9,6 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class SuperItens {
+    public GameFrame gameFrame;
     public BufferedImage image;
     public String name;
     public boolean collision = false;
@@ -17,7 +19,7 @@ public class SuperItens {
     public int solidAreaDefaultX = 0;
     public int solidAreasDefaultY = 0;
     Utils ut = new Utils();
-    Tela tj = new Tela();
+    Tela tj = new Tela(gameFrame);
     Entity entity = new Entity(tj);
 
 

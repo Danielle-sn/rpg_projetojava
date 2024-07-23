@@ -2,24 +2,36 @@ package Telas;
 
 import javax.swing.*;
 import java.awt.*;
+import entity.Guerreiro;
+import entity.Feiticeira;
+import entity.Esqueleto;
+import main.KeyHandler;
+
 
 public class GameFrame extends JFrame{
     private CardLayout cardLayout;
     private JPanel cards;
     private Tela telaJogo;
+    private KeyHandler keyH;
 
     private String selectedCharacter;
 
     public GameFrame(){
         //configura no tipo CardLayout
+        telaJogo = new Tela(this);
+
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
+        Guerreiro guerreiro = new Guerreiro("Guerreiro", 10, 5, 3, 15, 1, 100, 0, 100, 1, telaJogo, keyH);
+        Feiticeira feiticeira = new Feiticeira("Feiticeira", 10, 5, 3, 15, 1, 100, 0, 100, 1, telaJogo, keyH);
+        Esqueleto esqueleto = new Esqueleto("Esqueleto", 10, 5, 3, 15, 1, 100, 0, 100, 1, telaJogo, keyH);
+
+
 
         //paineis
-        telaJogo = new Tela();
         MainMenuPanel menu = new MainMenuPanel(this);
         //OptionsPanel options = new OptionsPanel();
-        TelaBatalha batalha = new TelaBatalha(this);
+        TelaBatalha batalha = new TelaBatalha(this, guerreiro, feiticeira,esqueleto);
         EscolhaPersonagemPanel escolha = new EscolhaPersonagemPanel(this);
 
         //adicionando os paineis ao CardLayout
