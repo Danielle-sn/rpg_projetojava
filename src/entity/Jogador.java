@@ -16,6 +16,8 @@ public class Jogador extends Entity {
         screenX = tj.screenWidth / 2 - (tj.tileSize / 2);
         screenY = tj.screenHeight / 2 - (tj.tileSize / 2);
     }
+
+
     public void setDefaultValues(){
         worldX = tj.tileSize * 23;
         worldY = tj.tileSize * 21;
@@ -175,4 +177,6 @@ public class Jogador extends Entity {
         g2.drawImage(image, screenX, screenY, null);
 
     }
+
+
 }

@@ -16,6 +16,7 @@ public class Inimigo extends Entity {
 
 
 
+
     private void definirAtaqueInimigo(){
         int ataqueDoPersonagem = super.nivelDeAtaque();
         int ataqueDoInimigo = ataqueDoPersonagem - 5;
