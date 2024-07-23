@@ -42,7 +42,7 @@ public class Tela extends JPanel implements Runnable{
         private Tela tj;
 
         public TileManager tileM = new TileManager(this);
-        KeyHandler keyH = new KeyHandler();
+        KeyHandler keyH = new KeyHandler(this);
         Thread gameThread; // iniciar o tempo no jogo, pode iniciar e parar, deixa o programa rodando até parar
         public ChecandoColisao checandoColisao = new ChecandoColisao(this);
         public CriarItens cItens = new CriarItens(this);
@@ -54,6 +54,8 @@ public class Tela extends JPanel implements Runnable{
         //public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,3,8, 9, 10, 11, 12, tj, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);*/
         public Feiticeira feiticeira;
+        public Guerreiro guerreiro;
+        public Esqueleto esqueleto;
         public Movimento mov;
         public SuperItens[] itens = new SuperItens[10];
 
@@ -62,9 +64,7 @@ public class Tela extends JPanel implements Runnable{
         public final int playState = 1;
         public final int pauseState = 2;
 
-        //public Guerreiro guerreiro;
-        public Esqueleto esqueleto;
-        //public SuperItens[] itens = new SuperItens[10];
+
 
 
         public Tela() {
@@ -80,7 +80,7 @@ public class Tela extends JPanel implements Runnable{
 
             gameState =  playState;
 
-            //guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
+            guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
             feiticeira = new Feiticeira("Lyra", 90, 1, 3, 4,5, 6, 7, 8, 8, this, keyH);
             esqueleto = new Esqueleto("esqueleto", 100, 1, 25, this, keyH);
             mov = new Movimento(this, keyH, guerreiro);
@@ -152,7 +152,7 @@ public class Tela extends JPanel implements Runnable{
 
 
 
-        /*public void paintComponent(Graphics g){ //metodo padrao
+        public void paintComponent(Graphics g){ //metodo padrao
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D)g;
             //DEBUG
@@ -172,15 +172,15 @@ public class Tela extends JPanel implements Runnable{
                 }
             }
             // jogador
-           // guerreiro.draw(g2);
+            guerreiro.draw(g2);
             feiticeira.draw(g2);
-            guerreiro.draw(g2);*/
+
 
             //interface
-            //iu.draw(g2);
+            iu.draw(g2);
 
 
-/*
+
             //DEBUG
             if(keyH.checkDrawTime == true) {
                 long drawEnd = System.nanoTime();
@@ -194,12 +194,12 @@ public class Tela extends JPanel implements Runnable{
            //esqueleto.draw(g2);
 
             g2.dispose();
-        }*/
+        }
 
-   /* public void setVisible(boolean b) {
+    public void setVisible(boolean b) {
         super.setVisible(b);
         requestFocusInWindow(); // Foco painel (permite que  painel receba a entrada de taclas)
-    }*/
+    }
 
 
 }

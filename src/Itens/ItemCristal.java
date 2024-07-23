@@ -9,6 +9,7 @@ import java.util.Objects;
 public class ItemCristal extends SuperItens{
         Tela tj;
 
+
         public ItemCristal (Tela tj){
             name = "Cristal Mágico";
             try{

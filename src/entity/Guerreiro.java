@@ -16,7 +16,7 @@ public class Guerreiro extends Entity{
     public final int screenX;
     public final int screenY;
 
-    //int chaveColetada = 0;
+
 
     public Guerreiro(String nome, int forca, int agilidade, int dexterity, int ataque, int nivel, int saude, int exp, int nextLevelExp, int currentWeapon, Tela tj, KeyHandler keyH) {
         super(nome, forca, agilidade, dexterity, ataque, nivel, saude, exp, nextLevelExp, currentWeapon, tj,  keyH);
@@ -145,6 +145,7 @@ public void draw(Graphics2D g2){
     //g2.setColor(Color.white);
     //g2.fillRect(x, y, tj.tileSize, tj.tileSize);
     BufferedImage image = null;
+
     switch(direction){
         case "up":
             if (spriteNum == 1){
