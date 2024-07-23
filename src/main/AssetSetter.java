@@ -41,11 +41,11 @@ public class AssetSetter {
         tj.npc[0].worldY = tj.tileSize*21;
     }
     public void setEsqueleto(){
-        tj.esqueleto[0] = new Esqueleto("esqueleto",100,1,25,tj, null);
+        tj.esqueleto[0] = new Esqueleto("esqueleto",100,1,25, 5,50,2,3,2,3,tj, null);
         tj.esqueleto[0].worldX = tj.tileSize* 23;
         tj.esqueleto[0].worldY = tj.tileSize*36;
 
-        tj.esqueleto[1] = new Esqueleto("esqueleto",100,1,25,tj, null);
+        tj.esqueleto[1] = new Esqueleto("esqueleto",100,1,25, 5,50,2,3,2,3,tj, null);
         tj.esqueleto[1].worldX = tj.tileSize* 23;
         tj.esqueleto[1].worldY = tj.tileSize*37;
 

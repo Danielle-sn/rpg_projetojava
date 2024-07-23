@@ -45,7 +45,8 @@ public class Tela extends JPanel implements Runnable{
         public InterfaceUsuario iu = new InterfaceUsuario(this);
 
         //ENTIDADE E ITENS
-        public Guerreiro guerreiro = new Guerreiro("Chris",100,1,50,this, keyH);
+        public Guerreiro guerreiro = new Guerreiro("Chris", 100, 1, 50, 5, 2, 5, 8, 9, 3, this, keyH);
+        public Feiticeira feiticeira = new Feiticeira("Lyra", 90, 1, 3, 4,5, 6, 7, 8, 8, this, keyH);
         //public Esqueleto esqueleto = new Esqueleto("esqueleto",100,1,25,this, keyH);
         public SuperItens[] itens = new SuperItens[10];
         public Entity[] npc = new Entity[10];
@@ -118,6 +119,8 @@ public class Tela extends JPanel implements Runnable{
             if(gameState == playState){
                 //jogador
                 guerreiro.update();
+                feiticeira.update();
+
                 //npc
                 for(int i = 0; i < npc.length; i++){
                     if(npc[i] != null){
@@ -169,8 +172,8 @@ public class Tela extends JPanel implements Runnable{
                 }
             }
             // jogador
-            guerreiro.draw(g2);
-
+            //guerreiro.draw(g2);
+            feiticeira.draw(g2);
             //interface
             iu.draw(g2);
 
