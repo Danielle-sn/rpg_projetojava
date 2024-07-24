@@ -168,7 +168,7 @@ public class TelaBatalha extends JPanel {
                 }
 
 
-            }
+    }
 
             @Override
             protected void paintComponent(Graphics g) {
@@ -238,4 +238,4 @@ public class TelaBatalha extends JPanel {
                 }
             }
 
-        }
+}
